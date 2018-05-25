@@ -15,15 +15,13 @@
         <li class="nav-item">
           <a class="nav-link" href="/ideas/add">New Pots</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/about">Chat</a>
-        </li>   
       </ul>
       <ul class="navbar-nav ml-auto">
         {{#if user}}
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropdownMenuLink">Welcome {{user.name}}</a>
             <div class="dropdown-menu">
+              <a href="https://dtctech.herokuapp.com/" target="_blank" class="dropdown-item">Chat</a>
               <a href="/quizzes" class="dropdown-item">Score</a>
               <a href="/quiz1" class="dropdown-item">Chapter #1 Quiz</a>
             </div>
