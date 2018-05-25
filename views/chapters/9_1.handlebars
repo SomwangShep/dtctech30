@@ -1,0 +1,232 @@
+  <h1> Strings - Section 1</h1>
+  <div class = "center">
+    Section 1 |
+    <a href="/chapter/9_2">Section 2 |</a></href>
+  </div>
+  
+  <h2>Strings</h2>
+  <p>
+  	The Java String <code>class</code> is used to store and manipulate character sequences.  The String class has many constructor methods.  Three commonly used constructors are given below.
+  </p>
+  <pre>
+String()
+String(String original)
+String(char[] text)</pre>
+<p>
+	The first constructor creates a <code>new</code> empty String object.  There is a difference between a String object that contains no characters and a null pointer.  The second creates a <code>new</code> String object containing the same character sequence as the argument String, <code>original</code>.  The third constructor creates a <code>new</code> String object with the same character sequence as the <code>char</code> array <code>text</code>.
+</p>
+<p>A <code>new</code> String can also be created by assigning a String constant to the variable.</p>
+<pre>String s = "Some text";</pre>
+<p>
+	This assignment statement allows <code>new</code> values to be assigned to a String as if it were a primitive data type.  But String is not a primitive data type.  The above is rewritten by the compiler.
+</p>
+<pre>s = new String("Some text");</pre>
+<p>
+	Because Strings are objects, they can not be compared for equality using the == operator.  The equals() method must be called on them.  The == operator would compare the object IDs of two Strings, not the character sequences.
+</p>
+
+<h2 id="StringMethods">
+	String Methods
+</h2>
+<p>
+	The String <code>class</code> contains many useful methods that can be called on String objects.  String methods do not alter the existing String object, but <code>return</code> a new String object, or information about the existing object.  Many of the String methods are overloaded.  The methods listed in this section are only some of those in the String <code>class</code>.
+</p>
+
+<h3>boolean equals(String s)</h3>
+
+<p>
+	We have already used the equals() method.  It <code>returns</code> a <code>boolean</code> value that is <code>true if</code> the argument String contains the same character sequence as the String object the method is called on.
+</p>
+
+<h3>boolean contains(String s)</h3>
+
+<p>
+	The contains() method takes a String argument.  The method <code>returns</code> a <code>boolean</code> value.  If the object the method is called on contains the argument String <code>s</code>, the return value is <code>true</code>.  Otherwise the method <code>returns false</code>.
+</p>
+<pre>
+String sentence = "The rain in Spain";
+String word = "in";
+if(sentence.contains(word))
+{
+    System.out.println("The sentence contains the word in");
+}</pre>
+<p>
+	Of course, the argument can be a String constant.  In fact, string methods can be called on String constants.  Once again, Strings are not primitive data types.  The code:
+</p>
+<pre>
+"sentence"
+
+is equivalent to:
+
+new String("sentence");</pre>
+<p>
+	A <code>new</code> String object with no name is created.  So, the following will work, though it might not be particularly useful.
+</p>
+<pre>
+if("The rain in Spain".contains("in"))
+{
+    System.out.println("The sentence contains the word in");
+}</pre>
+
+<h3>int length()</h3>
+<p>
+	The length() method has no arguments.  It <code>returns</code> the number of characters in the String it is called on.
+</p>
+<pre>
+String word = "Zoidberg";
+System.out.println(word + " has " + word.length() + " letters.");</pre>
+<p>
+	Note that the length() method is a method, and requires parentheses, even though it takes no arguments.  Don't confuse the String length() method with the length parameter used to get the length of an array, which does not use parentheses.
+</p>
+
+<h3>boolean equalsIgnoreCase(String s)</h3>
+<p>
+	The equalsIgnoreCase() method <code>returns true</code> if the object the method is called on has exactly the same text, not including case, as the String <code>s</code>.
+</p>
+<pre>
+String string1 = "gigabytes";
+String string2 = "GiGaByTeS";
+if(string1.equalsIgnoreCase(string2))
+{
+	System.out.println("Close enough!");
+}</pre>
+
+<h3>String toLowerCase()</h3>
+<p>
+	The toLowerCase() method creates and <code>returns</code> a <code>new</code> String object with the same text as the String object the method is called on, but converts all the text to lower case.
+</p>
+<h3>String toUpperCase()</h3>
+<p>
+	The toUpperCase() method creates and <code>returns</code> a new String object with the same text as the String object the method is called on, but converts all the text to upper case.
+</p>
+<p>
+	Since these methods <code>return</code> String objects, methods can be called on them.  The example below shows a complex use of the contains() method.  The statement converts both <code>sentence</code> and <code>word</code> to uppercase before checking the <code>sentence</code> for the <code>word</code>.  The contains() method is called on the String <code>returned</code> from the toUpperCase() method called on the String <code>sentence</code>.  The argument to the contains() method is the String object <code>returned</code> from the call to toUpperCase() on <code>word</code>.  
+</p>
+<pre>
+String sentence = "The rain in Spain";
+String word = "In";
+if(<strong>sentence.toUpperCase().contains(word.toUpperCase())(</strong>)
+{
+    System.out.println("The sentence contains the word IN");
+}</pre>
+
+<h3>String trim()</h3>
+<p>
+	The trim() method creates and <code>returns</code> a new String object with the same text as the String object the method is called on, but removes white space (spaces, tabs, and newlines) from either end.
+</p>
+<pre>
+String word = "        Rivendell        ";
+String trimmedWord = word.trim();</pre>
+<p>
+	After the two statements above, the String <code>word</code> still contains spaces before and after Rivendell, but the String <code>trimmedWord</code> does not.
+</p>
+<pre>
+word   &rarr;  	"        Rivendell        "
+trimmedWord  &rarr; "Rivendell"</pre>
+<h3>char charAt(int index);</h3>
+<p>
+	The charAt() methods <code>returns</code> one of the characters from the String object the method is called on.  The method requires one argument of type <code>int</code>, which represents the index of the desired character.  The first character of the String is at index 0, just as the first element of an array is at index 0.
+</p>
+<pre>
+String word = "characters";
+char letter = word.charAt(2);</pre>
+<p>These statements assign the character 'a' to the <code>char</code> variable <code>letter</code>.</p>
+<h3>
+String substring(int beginIndex)<br/>
+String substring(int beginIndex, int endIndex)
+</h3>
+<p>
+	There are two versions of the substring() method.  Both methods create and <code>return</code> a <code>new</code> String object that contains only some of the characters in the String object the method is called on.  
+</p>
+<p>
+	The first version only requires one argument, which specifies where in the String to start.  The method makes a copy of the original String starting at beginIndex, and ending at the end of the String. 
+</p>
+<p>
+	The second version requires two arguments.  The first is the index of the first character to be included in the substring.  The second specifies the end of the substring.  All characters up to this index will be included, but the character at this index will not.
+</p>
+<pre>
+String sentence = "It does say colonel on my uniform.";
+String phrase = sentence.substring(3, 19);</pre>
+<p>After the statements above, the String <code>phrase</code> holds the text, "does say colonel".</p>
+
+<h3>
+int indexOf(String substring)<br/>
+int indexOf(String substring, int beginIndex)
+</h3>
+
+<p>
+	There are two versions of the indexOf() method.  Both methods search for a substring in the String they are called on, and <code>return</code> the index where the substring is first found.  If the substring is not found within the String, the method returns -1.
+</p>
+<p>
+	The first version searches the entire String for the substring.  If the substring is found, an integer is <code>returned</code> specifying the index in the String were the substring first appears.
+</p>
+<p>
+	The second version searches only part of the String, starting at beginIndex.  It is common to use the first version to find the first occurrence of a substring, and to use the second version to find subsequent occurrences.
+</p>
+<p>
+	The example code below searches for the word "in" using indexOf().  Once the word is found the first time, we use indexOf() to search the String again starting one character after the last place the word was found.  When indexOf() returns a value of -1, we know we've found all occurrences of our search word.
+</p>
+<pre>
+String sentence = "The rain in Spain";
+int index = sentence.indexOf("in");
+System.out.println("Found it at index " + index);
+index = sentence.indexOf("in", index + 1);
+while(index != -1)
+{
+	System.out.println("Found it again at index " + index);
+	index = sentence.indexOf("in", index + 1);
+}</pre>
+<h3>String[] split(String separator)</h3>
+<p>
+	The split() method separates a String into an array of Strings and returns this array.  The method takes one argument of type String.  This argument defines the separator that will be used to split the String into an array.  The String will be broken into substrings at each occurrence of the separator.  The separator is not included in any of the returned array elements. 
+</p>
+<p>
+	In the example below, a String containing semicolons is created.  This String is then split into a String array using the semicolons as a separator.  Then the individual words are printed. 
+</p>
+<pre>
+String sentence = "My;four;favorite;words";
+String[] words = sentence.split(";");
+for(int i = 0; i < words.length; i++)
+{
+	System.out.println(words[i]);
+}</pre>
+<h3>char[] toCharArray()</h3>
+<p>
+	The toCharArray() method creates a character array using the characters in the String object the method is called on.  The method creates and <code>returns</code> a new char array having the same length as the original String.  The method requires no arguments.
+</p>
+<p>
+	In the example below, the String <code>word</code> is separated into individual characters, which are printed.
+</p>
+<pre>
+String word = "Namarie";
+char[] letters = word.toCharArray();
+for(int i = 0; i < letters.length; i++)
+{
+	System.out.println(letters[i]);
+}</pre>
+<h3>String replaceAll(String original, String replacement)</h3>
+<p>
+	The replaceAll() method searches the String object the method is called on, and replaces all occurrences of the String <code>original</code> with the <code>String replacement</code>.  A <code>new</code> String object is created with the changes, and <code>returned</code> by the method.
+</p>
+<p>
+	In the example below, a String is created with a spelling mistake.  The replaceAll() method is used to replace all occurrences of "wong" with "wrong".
+</p>
+<pre>
+String line = "wong is spelled wong on this line";
+System.out.println(line);
+line = line.replaceAll("wong", "wrong");
+System.out.println(line);</pre>
+
+<h3>
+boolean startsWith(String s)<br/>
+boolean endsWith(String s)
+</h3>
+<p>
+	The StartsWith() and endsWith() methods <code>return true</code> only if the String the method is called on starts with or ends with the String <code>s</code>.
+</p>
+
+  <div class = "center">
+    Section 1 |
+    <a href="/chapter/9_2">Section 2 |</a></href>
+  </div>
+  

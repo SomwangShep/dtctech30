@@ -1,0 +1,111 @@
+  <h1> Arrays - Section 1</h1>
+  <div class = "center">
+    Section 1 |
+    <a href="/chapter/7_2">Section 2 |</a></href>
+    <a href="/chapter/7_3">Section 3 |</a></href>
+  </div>
+  
+  <h2>Arrays</h2>
+  <p>
+  	An array is a set of variables that are all of the same type.  Suppose we want a program to store three numbers entered by a user.  In the code below, three variables are created to hold the numbers.
+  </p>
+  <p style="text-align: center;"><img src="/img/c7_p1_01.jpg"%></p>
+  <p>
+  	Rather than create three separate variables, we could create an array that holds three doubles, and store the numbers in the array.
+  </p>
+  <p style="text-align: center;"><img src="/img/c7_p1_02.jpg"%></p>
+  <p>
+  	You can make an array of any type, including both primitive and <code>class</code> types.  To create an array, you need to know 3 things.
+  </p>
+  <p>
+  	What type the array will hold (int, double, String…)<br/>
+	What you would like to call the array<br/>
+	How many elements the array will hold
+  </p>
+  <p style="text-align: center;"><img src="/img/c7_p1_03.jpg"%></p>
+  <p>
+  	The statement below creates an <code>int</code> array named stanley that can hold five <code>ints</code>.  The array <code>stanley</code> is a variable, and the variable type is <code>int[] (int array)</code>.
+  </p>
+  <p style="text-align: center;"><img src="/img/c7_p2_01.jpg"%></p>
+  <p>
+  	We refer to the items in the array as elements.  We access the elements of the array by using an index.  The index is an <code>int</code> that represents a particular element in the array.  The first element in every array is at index 0.  To access a particular element in an array, the index is placed in square brackets after the array name.  
+  </p>
+  <p style="text-align: center;"><img src="/img/c7_p2_02.jpg"%></p>
+  <p>
+  	Note that while <code>stanley</code> is an <code>int</code> array, <code>stanley[0]</code> is an <code>int</code>.  Each element of an array can be used in the same way as a variable.
+  </p>
+  <p style="text-align: center;"><img src="/img/c7_p2_03.jpg"%></p>
+  <p>
+  	Since <code>stanley</code> was created as a length 5 array, <code>stanley</code> can hold 5 elements.  
+Notice that the highest index (4 in this case) is one less than the array length (5 in this case).  The element <code>stanley[5]</code> does not exist.  It is a common programming error to try to access a non-existent element.  If, at runtime, the program attempts to use a negative index, or an index that is greater than or equal to the array length, an ArrayIndexOutOfBounds exception will be thrown and the program will terminate.
+  </p>
+  <p>
+  	In the example program below, the user is asked to enter three numbers.  The program adds the numbers and prints the sum.
+  </p>
+  <pre>
+import java.util.Scanner;
+
+public class Adder
+{
+	public static void main(String[] agrs)
+	{
+		Scanner keyboard = new Scanner(System.in);
+		double[] number = new double[3];
+		double sum = 0;
+
+		System.out.println("Enter first number:");
+		number[0] = keyboard.nextDouble();
+		System.out.println("Enter second number:");
+		number[1] = keyboard.nextDouble();
+		System.out.println("Enter third number:");
+		number[2] = keyboard.nextDouble();
+
+		sum = number[0] + number[1] + number[2];
+		System.out.println("The sum is " + sum);
+	}
+}</pre>
+  <p style="text-align: center;"><img src="/img/c7_p3.jpg"%></p>
+  <p>
+  	The values stored in an array must be of the proper type.  However the index value used to access an element of any array must be an integer.  An expression may be used as long as it reduces to an <code>int</code>.
+  </p>
+  <pre>
+number[0]
+number[i]
+number[3 + x * (11 – y)]</pre>
+  
+  <h2 id="ArrayInitialization">
+  	Array Initialization
+  </h2>
+  <p>
+  	By default, all elements in an array are initialized to zero.
+  </p>
+  <p>
+  	In the case of primitives, the zero value is interpreted as normal.
+  </p>
+  <table class="customers">
+  	<tr><td>int</td><td>0</td></tr>
+  	<tr><td>double</td><td>0.0</td></tr>
+  	<tr><td>boolean</td><td>false</td></tr>
+  	<tr><td>char</td><td>\0 (the ASCII null character)</td></tr>
+  </table>
+  <p>
+  	In the case of an object variable, such as a String or Scanner, a value of 0 is called a null pointer, and it means the variable is not pointing to any object.  If you try to call a method on a variable that is a null pointer, a NullPointerException will be thrown and the program will exit.
+  </p>
+  <p>
+  	An array can be created and initialized with a constant array in one statement.  A constant array is denoted with curly braces.  The elements are values (constants, variables, or expressions) of the proper type for the array separated by commas.  A new array variable can be initialized to the values in a constant array by using the assignment operator.  This creates a new array and copies the values into it.  An array can only be initialized in this way when the array variable is created.
+  </p>
+  <pre>
+int[] array1 = {5, 7, 34, 18, 734};
+double[] array2 = {5.4, 6.8, 4.386, 1};
+boolean[] array3 = {true, true, true, false, true, false};
+char[] array4 = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
+String[] array5 = {"Red", "Yellow", "Blue"};</pre>
+  <p>
+  	The array will be created with the same size as the constant array assigned to it.  For example, the first line creates an int array of length 5 to hold the 5 numbers in the constant array.  The last line creates a String array with a length of 3 to hold the Strings "Red", "Yellow", and "Blue".
+  </p>
+
+  <div class = "center">
+    Section 1 |
+    <a href="/chapter/7_2">Section 2 |</a></href>
+    <a href="/chapter/7_3">Section 3 |</a></href>
+  </div>

@@ -1,0 +1,337 @@
+  <h1> For Loops - Section 2</h1>
+  <div class = "center">
+    <a href="/chapter/6_1">Section 1 |</a></href>
+    Section 2 |
+  </div> 
+  
+	<h2 id="SequenceGenerationandSeriesSummation">
+		Sequence Generation and Series Summation
+	</h2>
+	<p>
+		<code>For</code> loops are often used to generate a sequence of numbers.  For example, the following loop generates even numbers.
+	</p>
+	<pre>
+for(int i = 0; i < 50; i = i + 2)
+{
+	System.out.println(i);
+}</pre>
+	<p>
+		The loop below generates the odd numbers from -9 to 9.
+	</p>
+	<pre>
+for(int i = -9; i <= 9; i = i + 2)
+{
+	System.out.println(i);
+}</pre>
+	<p>
+		The loop below generates the sequence 1, 2, 3, and repeats it 5 times.  
+	</p>
+	<pre>
+for(i = 0; i < 15; i++)
+{
+	System.out.println(<strong>i % 3 + 1</strong>);
+}</pre>
+	<p>
+		The factorial of an integer is the product of that integer and all smaller integers starting with 1.  In mathematics, an exclamation point after a number means to take the factorial. The value of 0! is 1.
+	</p>
+	<p>
+		Some  examples:
+	</p>
+	<pre>
+0! = 1
+1! = 1
+2! = 2 x 1  =  2
+3! = 3 x 2 x 1  =  6
+4! = 4 x 3 x 2 x 1  =  24
+5! = 5 x 4 x 3 x 2 x 1	  =  120</pre>
+	<p>
+		A <code>for</code> loop is an ideal structure for multiplying consecutive integers.  The program below asks the user for a number.  It then calculates the factorial of that number.
+	</p>
+	<pre>
+import java.util.Scanner;
+
+public class Factorial
+{
+	public static void main(String[] args)
+	{
+		Scanner keyboard = new Scanner(System.in);
+		int number = 0;
+		int product = 1;
+
+		System.out.println("#### Factorial Calculator ####\n");
+		System.out.print("Enter an integer:");
+		number = keyboard.nextInt();
+
+		for(int i = 1; i <= number; i++)
+		{
+			product = product * i;
+		}
+
+		System.out.println(number + "! is " + product);
+	}
+}</pre>	
+	<p style="text-align: center;"><img src="/img/c6_p6.jpg"%></p>
+	<p>
+		A <code>for</code> loop is also a useful structure for summing the numbers in a series.  For example, the series below is equal to 1 if an infinite number of terms are used.
+	</p>
+	<p style="text-align: center;"><img src="/img/c6_p7.jpg"%></p>
+	<p>
+		The code below adds a number of terms equal to <code>terms</code>, which is set to 5.
+	</p>
+	<pre>
+int terms = 5;
+double sum = 0;
+double denominator = 2;
+
+for(int i = 0; i < terms; i++)
+{
+	sum = sum + 1/denominator;
+	denominator = denominator * 2;
+}</pre>
+	<p>
+		For a finite number of terms, the more terms used the closer we get to the correct sum.
+	</p><pre>
+1 term   - 0.5
+2 terms  - 0.75
+3 terms  - 0.875
+4 terms  - 0.9375
+5 terms  - 0.96875
+6 terms  - 0.984375
+7 terms  - 0.9921875
+8 terms  - 0.99609375
+9 terms  - 0.998046875
+10 terms - 0.9990234375
+11 terms - 0.99951171875
+12 terms - 0.999755859375
+13 terms - 0.9998779296875
+14 terms - 0.99993896484375
+15 terms - 0.999969482421875</pre>
+	<p>
+		We can see that the sum gets closer and closer to 1 as more terms are added.  
+	</p>
+	
+	<h2 id="PrintingShapes">
+		Printing Shapes
+	</h2>
+	<p>
+		Nested for loops can be used to print shapes.  The example below draws a square one asterisk at a time.  The inner loop prints one line of the square consisting of 10 asterisks.  The outer loop makes the inner loop run 10 times and adds a newline character at the end of each line.
+	</p>
+<!-- table -->
+<div class="container-fluid"> 
+  <div class="row">
+    <div class="col-sm-8">
+    <pre>
+public class Square
+{
+	public static void main(String[] args)
+	{
+		for(int i = 1; i <= 10; i++)
+		{
+			for(int j = 1; j <= 10; j++)
+			{
+				System.out.print("* ");
+			}
+			System.out.println();
+		}
+	}
+}</pre>
+
+    </div>
+    <div class="col-sm-4">
+    <pre>
+<strong>		Program Output:</strong>
+		
+		* * * * * * * * * *
+		* * * * * * * * * *
+		* * * * * * * * * *
+		* * * * * * * * * *
+		* * * * * * * * * *
+		* * * * * * * * * *
+		* * * * * * * * * *
+		* * * * * * * * * *
+		* * * * * * * * * *
+		* * * * * * * * * *
+
+
+</pre>
+    </div>
+  </div>
+</div>
+
+<!-- End table -->	
+	
+	<p>
+		With a little cleverness, we can print other shapes.  The program below has an <code>if</code> statement inside the nested <code>for</code> loops.  If the condition is true, an asterisk is printed.  Otherwise spaces are printed.  The condition <code>is i + j > 10</code>, which results in a right triangle.
+	</p>
+<!----- table -->
+<div class="container-fluid"> 
+  <div class="row">
+    <div class="col-sm-8">
+    <pre>
+public class RightTriangle
+{
+	public static void main(String[] args)
+	{
+		for(int i = 1; i <= 10; i++)
+		{
+			for(int j = 1; j <= 10; j++)
+			{
+				if(i + j > 10)
+				{
+					System.out.print("* ");
+				}
+				else
+				{
+					System.out.print("  ");
+				}
+			}
+			System.out.println();
+		}
+	}
+}</pre>
+
+    </div>
+    <div class="col-sm-4">
+    <pre>
+<strong>	Program Output:</strong>
+
+
+
+	
+	                  *
+	                * *
+	              * * *
+	            * * * *
+	          * * * * *
+	        * * * * * *
+	      * * * * * * *
+	    * * * * * * * *
+	  * * * * * * * * *
+	* * * * * * * * * *
+
+
+
+
+
+
+</pre>
+    </div>
+  </div>
+</div>
+
+<!-- End table -->	
+<p>
+	Some creativity is required in software design.  There are often many ways to do the same thing.  For example, the following program prints the same triangle as the program above.
+</p>
+<!----- table -->
+<div class="container-fluid"> 
+  <div class="row">
+    <div class="col-sm-8">
+    <pre>
+public class RightTriangle
+{
+	public static void main(String[] args)
+	{
+		for(int i = 1; i <= 10; i++)
+		{
+			for(int j = 10; j >= 1; j--)
+			{
+				if(j <= i)
+				{
+					System.out.print("* ");
+				}
+				else
+				{
+					System.out.print("  ");
+				}
+			}
+			System.out.println();
+		}
+	}
+}</pre>
+
+    </div>
+    <div class="col-sm-4">
+    <pre>
+<strong>	Program Output:</strong>
+
+
+
+	
+	                  *
+	                * *
+	              * * *
+	            * * * *
+	          * * * * *
+	        * * * * * *
+	      * * * * * * *
+	    * * * * * * * *
+	  * * * * * * * * *
+	* * * * * * * * * *
+
+
+
+
+
+
+</pre>
+    </div>
+  </div>
+</div>
+
+<!-- End table -->	
+
+
+	<h3>
+		Example: Baseball scoreboard
+	</h3>
+	<p>
+		In this example, the user enters the number of runs both teams scored for each inning of a baseball game.  After the ninth inning, the program declares a winner.   A for <code>loop</code> is used to repeat a block of code nine times.  The loop index variable is called <code>inning</code>.  It is initialized to 1 at the beginning of the loop, which increments <code>inning</code> after each pass, and loops as long as <code>inning</code> is less than or equal to 9.
+	</p>
+	<pre>
+import java.util.Scanner;
+
+public class Baseball
+{
+	public static void main(String[] args)
+	{
+		Scanner keyboard = new Scanner(System.in);
+		int input = 0;
+		int visitorScore = 0;
+		int homeScore = 0;
+		int inning = 0;
+
+		System.out.println("*****Baseball Scoreboard*****");
+
+		for(inning = 1; inning <= 9; inning++)
+		{
+			System.out.println("\n\nInning " + inning);
+			System.out.println("Enter runs for visiting team:");
+			input = keyboard.nextInt();
+			visitorScore = visitorScore + input;
+
+			System.out.println("Enter runs for home team:");
+			input = keyboard.nextInt();
+			homeScore = homeScore + input;
+		}
+		System.out.println("Game Over!!!");
+
+		if(visitorScore > homeScore)
+		{
+			System.out.println("\n\nVisitors win.");
+		}
+		if(visitorScore < homeScore)
+		{
+			System.out.println("\n\nHome team wins.");
+		}
+		if(visitorScore == homeScore)
+		{
+			System.out.println("\n\nTie game.");
+		}
+	}
+} </pre>
+
+  <div class = "center">
+    <a href="/chapter/6_1">Section 1 |</a></href>
+    Section 2 |
+  </div>

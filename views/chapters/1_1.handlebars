@@ -1,0 +1,190 @@
+  <h1> Introduction - Section 1</h1>
+  <div class = "center">
+    Section 1 |
+    <a href="/chapter/1_2">Section 2 |</a></href>
+    <a href="/chapter/1_3">Section 3 |</a></href>
+    <a href="/chapter/1_4">Section 4 |</a></href>
+  </div>
+  
+  <h2>A Java Program</h2>
+  <p>
+    Every computer has a microprocessor chip, which does most of the work.  The chip has lots of little wires so information can get in and out.  High and low voltages applied to the wires are seen as 1s and 0s by the processor.
+  </p>
+   <p style="text-align: center;"><img src="/img/c1_p1.jpg"></p>
+  <p>
+    Each 1 or 0 is called a bit, which stands for binary digit.  Sequences of bits are used to represent numbers within the processor.  For example, the sequence:
+  </p>
+  <P style="text-align: center;">
+    <code>00001010</code>
+  </P>
+  <P>
+    Might represent 10, and the sequence:
+  </P>
+  <p style="text-align: center;">
+    <code>01111010</code>
+  </p>
+  <p>
+    might represent 122.  This is how a computer stores numbers within a program.  The computer also uses numbers to represent memory addresses where values can be stored for later use.
+  </p>
+  <p>
+    Bit combinations are interpreted as numbers when used to represent values or memory addresses where values are stored.
+  </p>
+  <p>
+    Bit combinations are also used to represent instructions.  Each microprocessor chip has a set of instructions specific to its architecture.  For example, a particular microprocessor might have instructions such as those shown below.
+  </p>
+  <pre>
+0100011	could mean    Store A in address B
+1101011	could mean    Add numbers in address A and address B
+1001001	could mean    Store last result in address A</pre>
+  <p>
+    In these examples, A is the first number following the instruction and B is the second.  Instructions and values are put together to form commands.  Some simplified examples are shown below.
+  </p>
+  <pre>
+Instruction	  A	       B        
+0100011    00001010  01111010  		store the number 10 at address 192 
+1101011    00001010  01111010  		add the numbers at addresses 10 and 192
+1001001    01111010  				      store the result at address 192</pre>
+  <p>
+    A program is a list of commands for a computer to follow.  A machine language program is written in binary, like the example above.  All programs must be in a binary format to run on a computer.  
+  </p>
+  <p>
+    Obviously, writing entire programs in machine language is tedious work.  A high-level language, such as Java allows a programmer to write programs more conveniently.  Another program called a compiler must be used to convert the source code to machine language before the program can be run.
+  </p>
+  <p style="text-align: center;"><img src="/img/c1_p2.jpg"%></p>
+  <p>
+    Source code is code that was typed by a programmer in a high level language like Java.  The compiler reads this file, and creates a new file containing executable code that the computer can run.  Once a program has been compiled into machine language, it will only run on a processor it was compiled for.  A program normally has to be compiled for each type of computer it will run on.
+  </p>
+  <p>
+    Java programs are compiled to run on the Java Virtual Machine (JVM).  The JVM is an imaginary microprocessor with its own binary instruction set.  When we compile our Java programs, they are converted to run on this imaginary processor.  A compiled Java program is said to in bytecode format.  
+  <br/>When we run a Java program, the JVM converts the Java bytecode into machine language for computer on which it is will run.
+  </p>
+  <p>
+    The JVM is part of the Java Runtime Environment (JRE).  The JRE is needed to run Java programs.  The JRE contains the JVM and lots of compiled Java files.  This software is free, but most operating systems include it so you don't need to install it.  When your computer nags you about a Java update, it is trying to install the latest version of the JRE.  Since virtually all computers have a JVM, Java programs are platform independent.  A compiled Java program will run on any computer.
+  </p>
+  <p>
+    To create new Java programs, a developer must install the Java Development Kit (JDK), which is also free and can be found at java.sun.com.  There are three editions of the JDK; Java Micro Edition (J2ME), Java Standard Edition (J2SE), and Java Enterprise Edition (J2EE).  We will be using the Standard Edition.  The JDK is a development kit.  Among other things, it contains a program that compiles Java source code.  
+  </p>
+  <p>
+    The JDK includes the JRE, which includes the JVM.
+  </p>
+  <p style="text-align: center;"><img src="/img/c1_p3.jpg"%></p>
+  <h3>
+    Example Program – Howdy
+  </h3>
+  <p>
+    Using a text editor, type the following, and save the file as "Howdy.java".  
+  </p>
+  <pre>
+public class Howdy
+{
+	public static void main(String[] args)
+	{
+		System.out.println("Howdy!");
+	}
+}</pre>
+  <p>
+    To compile the program, open a command prompt.  Navigate to the location of the file "Howdy.java", and type the following:
+  </p>
+  <pre>
+javac Howdy.java</pre>
+  <p>
+    The javac program compiles the source code, and creates a new file called "Howdy.class".  To run the program, type:
+  </p>
+  <pre>
+java Howdy</pre>
+  <p style="text-align: center;"><img src="/img/c1_p4.jpg"%></p>
+  <p>
+    Most people prefer to use an Integrated Development Environment (IDE) to edit code.  An IDE is a program that allows you to edit text, compile your program, and run your program from a single application.  IDE's often have additional features, such as color coded text and automatic formatting.
+  </p>
+  <p id="AJavaProgram">
+    A Java Program
+  </p>
+  <p>
+    For now, all of the Java programs we write will look like the figure below.
+  </p>
+  <pre>
+public class <strong><em>AnyNameYouChoose</strong></em>
+{
+	public static void main(String[] args)
+	{
+
+
+                   <strong><em>Code You Write </strong></em>
+
+
+
+	}
+}</pre>
+  <p>
+    The first line says that this file defines a Java class, and that the class is public.  For now, that means that people are allowed to run the program.  Every program we write will start with the words "public class".  The next word will be the name of the class (the name of the program).  The name must start with a letter.  It can have numbers in it, as long as they are not the first character.  No other characters may be used.  By convention, we always start a class name with an uppercase letter.
+  </p>
+  <p style="text-align: center;color: red">
+    <code>Common Error:  A class name can't have a space in it.</code>
+  </p>
+  <p>
+    A Java file must be saved with the same name as the class contained within, and it must have the .java extension.  For example, the class Howdy must be saved in a file called "Howdy.java".
+  </p>
+  <p>
+    The next line is very strange.
+  </p>
+  <pre >
+public static void main(String[] args)</pre>
+  <p>
+    This is the beginning of the program's main() method definition.  Every program must have a place to start, and this line tells the JVM where.  We'll save an explanation of this line until later.  For now, every java program has this line.  Memorize it.
+  </p>
+  <p>
+    Note that curly braces ({}) are used in the program.  An opening brace indicates the start of something, like a class or a method definition.  A corresponding closing brace must be used to end each opening brace.
+  </p>
+  <p>
+    All of the code we write goes inside main(), which is inside the class.
+  </p>
+  <p style="text-align: center;"><img src="/img/c1_p6.jpg"%></p>
+  <p>
+    When a program runs, it starts at the first line within main().  After it executes each line, it moves on to the next.  When there are no more lines to execute, the program ends.  So far, the only executable line we've seen is the method call:
+  </p>
+  <pre>
+System.out.println("Howdy");</pre>
+  <p>
+    System.out.println() is a method.  That means it is a command you can use in a program.    Each time System.out.println() is encountered, the program prints text to the console.  
+  </p>
+  <p>
+    A method call always uses parentheses.  We can put arguments within the parentheses to tell the method what to do.  The System.out.println() method takes one argument, which is the text you want to print.  The text must be surrounded by quotation marks.
+  </p>
+  <p>
+    We can call the System.out.println() method repeatedly to print multiple lines of text.
+  </p>
+  <h3>
+    Example Program – Camelot
+  </h3>
+  <pre>
+public class Camelot
+{
+	public static void main(String[] args)
+	{
+		System.out.println("We're Knights of the round table");
+		System.out.println("Our shows are formidable");
+		System.out.println("But often times we're given rhymes");
+		System.out.println("that are quite unsingable");
+	}
+}</pre>
+  <p style="text-align: center;"><img src="/img/c1_p7.jpg"%></p>
+  <p>
+    Although the computer runs one line of code at a time, the compiler does not see a line as we do.  Each method call ends with a semicolon, and the compiler sees this as the end of a line.  Whitespace characters that we add in, such as extra spaces, tabs, and newlines, are ignored by the compiler.  The program below would compile into the same executable file as the one above.  However, it is not as easy to read.
+  </p>
+  <pre style="color:red">
+public    class     Camelot{public static 
+void main(String[] args){
+System.out.println("We're Knights of the round table")
+;
+   System.out.println("Our shows are formidable");System.out.println ("But often times we're given rhymes");
+System.out.println("that are quite unsingable");}		}</pre>
+
+  <div class = "center">
+    Section 1 |
+    <a href="/chapter/1_2">Section 2 |</a></href>
+    <a href="/chapter/1_3">Section 3 |</a></href>
+    <a href="/chapter/1_4">Section 4 |</a></href>
+  </div>
+  
+<!-- =================================== Start quiz ================================= -->
+<p style="text-align: center;"><button id="newBtn" type="button" class="btn btn-default btn-warning">Test your skill</button></p>

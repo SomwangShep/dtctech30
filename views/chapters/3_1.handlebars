@@ -1,0 +1,142 @@
+  <h1> Conditional - Section 1</h1>
+  <div class = "center">
+    Section 1 |
+    <a href="/chapter/3_2">Section 2 |</a></href>
+  </div>
+  
+  <h2>If Statements</h2>
+  <p >
+    An <code>if</code> statement is a way to make a program execute code conditionally.  That means if some condition is met, the code will run.  If the condition is not met, the code will not run.  An <code>if</code> statement begins with the word if followed by a condition in parentheses.  A code block enclosed in curly braces follows the condition.
+  </p>
+  <pre>
+if(x > 5)
+{
+	System.out.println("x is greater than 5");
+}</pre>
+  <p>
+    The Budget program in the last chapter subtracts a person's expenses from their paycheck and displays the money remaining.  If the expenses are greater than the paycheck, the money remaining will be negative.  It would be nice if the program could react differently in that case.
+  </p>
+  <pre>
+money = pay - car - rent - electricity - food;
+
+System.out.println("You have $" + money + " left.");
+<strong>
+if(money < 0)
+{
+	System.out.println("You're in trouble!!");
+}</strong></pre>
+  
+  <p style="text-align: center;"><img src="/img/c3_p1.jpg"%></p>
+  <p>
+    An <code>if</code> statement controls the code that follows it.  If the condition in the if statement is true, the code will run.  A condition (or Boolean expression), is an expression that is equal to true or false.  A simple condition can be made using relational operators.
+  </p>
+  <h2 id="RelationalOperators">
+    Relational Operators
+  </h2>
+  <pre style="color:blue">
+>		Is Greater Than
+<		Is Less Than
+>=		Is Greater Than Or Equal To
+<=		Is Less Than Or Equal To
+==		Is Equal To
+!=		Is Not Equal To</pre>
+  <p>
+    There are six relational operators.  These operators compare two numbers (two <code>ints</code> or two doubles</code>).  The result of these comparisons will always be either true or false.  Notice that the "is equal to" operator uses two equal signs (==).  A single equal sign is an assignment operator(=), which will not compare two numbers.    
+  </p>
+  <p>
+    A condition might use constants.
+  </p>
+  <p class="centerBlue">
+    <code>3 < 4		( 3 Is Less Than 4)</code>
+  </p>
+  <p>
+    The condition above is <code>true</code> because 3 is less than 4.
+  </p>
+  <p>
+    The condition can use variables.  In the example below, x = 3, and y = 4.
+  </p>
+  <p class="centerBlue">
+    <code>x > y		(x Is Greater Than y)</code>
+  </p>
+  <p>
+    This condition is false.  3 is not greater than 4.
+  </p>
+  <p>
+    The relational operators compare numbers, so expressions using mathematical operators can be used.
+  </p>
+  <p class="centerBlue">
+    <code>x – 3 <= 2 + y / 4</code>
+  </p>  
+  
+  <h2 id="ComparingStrings">
+    Comparing Strings
+  </h2>
+  <p>
+    The relational operators only compare numbers.  You must compare Strings using the equals() method.  Suppose we have the following two String variables:
+  </p>
+  <pre>
+String word1 = "apples";
+String word2 = "oranges";</pre>
+  <p>
+    The line below will result in a false, because the two Strings are not the same.
+  </p>
+  <pre>
+word1.equals(word2) => false</pre>
+  <h2 id="LogicalOperators">
+    Logical Operators
+  </h2>
+  <p>
+    Logical operators are used for <code>boolean</code> values.  The result of these operations is always a <code>true</code> or a <code>false</code>.
+  </p>
+  <h3>
+    The && operator (AND)
+  </h3>
+  <p>
+    The && operator is also called the AND operator.  If the operand on both sides of the AND are <code>true</code>, the result of the AND operation will be <code>true</code>.  However, if either operand is <code>false</code>, the result will be <code>false</code>.
+  </p>
+  <pre>
+false && false => false
+false && true  => false
+true  && false => false
+true  && true  => true</pre>
+  <p>
+    The AND operator has the same meaning in Java as in common speech. 
+  </p>
+  <p class="centerBlue">
+    Your car will start if the battery is charged AND it has gas.
+  </p>
+  <p>
+    The only time the car will start is when both operands are <code>true</code>.  If either or both are <code>false</code>, the car will not start.
+  </p>
+  
+  <h2 id="TheORoperator">
+    The || operator (OR)
+  </h2>
+  <pre>
+false || false  => false
+false || true   => true
+true  || false  => true
+true  || true	=> true</pre>
+  <p>
+    Once again, the word OR has the same meaning in Java as in common speech.
+  </p>
+  <p class="centerBlue">
+    You'll be in trouble if your brakes fail OR if your wheels fall off.
+  </p>
+  <p>
+    You will be in trouble if either operand is <code>true</code>.  You will only be safe if both operands are <code>false</code>.
+  </p>
+  <h2 id="TheNOToperator (NOT)">
+    The ! operator (NOT)
+  </h2>
+  <p>
+    The NOT operator only uses one operand. If the value following the NOT operator is <code>true</code>, the result of the operation is <code>false</code>.  If the value following the NOT operator is <code>false</code>, the result of the operation is <code>true</code>.
+  </p>
+  <pre>
+!false => true 
+!true => false</pre>
+  
+  <div class = "center">
+    Section 1 |
+    <a href="/chapter/3_2">Section 2 |</a></href>
+  </div>

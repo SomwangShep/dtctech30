@@ -1,0 +1,154 @@
+  <h1> Variables - Section 1</h1>
+  
+  <div class = "center">
+    Section 1 |
+    <a href="/chapter/2_2">Section 2 |</a></href>
+    <a href="/chapter/2_3">Section 3 |</a></href>
+  </div>
+  
+  <h2>Variables</h2>
+  <p>
+    A variable is a name that corresponds to a value stored in the <a href="https://www.tutorialspoint.com/computer_fundamentals/computer_memory.htm" target="_blank">memory of the computer</a>.  We use variables in a program to hold values that are entered by a user, or are the result of a calculation.  When a variable is created, a section of memory is set aside to hold the value.  A variable must be created before it can be used.  The value of a variable can change as the program executes.  The number 5 is a constant.  It can not be changed.  It is always 5.  The value of a variable called x could change many times in a program.  On any line, a variable can be set to the value of a constant, another variable, or an expression involving both constants and variables.
+  </p>
+  <h2 id="typeJump"> Types </h2>
+  <p>
+    Every variable has a type.  The type of a variable refers to the kind of value it can hold.  The Java language defines <a href="http://cs.fit.edu/~ryan/java/language/java-data.html" target="_blank">eight primitive types</a>; boolean, byte, char, double, float, int, long, and short.  We will use four of these eight in this book.    
+  </p>
+	<table class ="customers">
+		<tr><td><strong>boolean</strong></td><td>Holds a <code>true</code> or a <code>false</code></td></tr>
+		<tr><td><strong>int</strong></td><td>Holds an integer, like 5, 0, or -64</td></tr>
+		<tr><td><strong>double</strong></td><td>Holds a decimal number, like 2.7 or -15.83</td></tr>
+		<tr><td><strong>char</strong></td><td>Holds one character, like b,6, or &</td></tr>
+	</table>  
+	<p>
+	  A <code>boolean</code> variable can be set to the value <code>true</code>, or the value <code>false</code>.  These are the only two boolean constants.  The computer actually stores a number, 1 for true and 0 for false.  The boolean type requires one bit of memory.
+	</p>
+	<p>
+	  An <code>int</code> variable can be set to a positive or negative whole number.  The value of an int can range from -2147483648 to 2147483647.  The int type requires 4 bytes (32 bits) of memory.
+	</p>
+	<p>
+	  A <code>double</code> variable can be set to very large or very small positive and negative numbers (values higher than 10<sup>300</sup>, and lower than10<sup>-300</sup>).  The numbers can include a decimal point, and well over 10 significant digits.  The double type requires 8 bytes (64 bits) of memory.
+	</p>
+	<p>
+	  A <code>char</code> variable can be set to any one character.  A char constant must be enclosed with apostrophes (').  The char type requires 2 bytes (16 bits) of memory.  
+	</p>
+	<p>
+	  All data in a computer are stored as numbers.  A char value is assigned a number according to the <a href="http://www.ascii-code.com/" target="_blank">ASCII</a> standard (American Standard Code for Information Interchange).  The table below lists the <a href="http://www.ascii-code.com/" target="_blank">ASCII</a> values for the printable characters.
+	</p>
+	<p>
+	  Printable ASCII Characters
+	</p>
+	<table class="customers2">
+		<tr><td>32 space</td><td>42  *</td><td>52  4</td><td>62  ></td><td>72  H</td><td>82 R</td><td>92 \</td><td>102 f</td><td>112 p</td><td>122 z</td></tr>
+		<tr><td>33  !</td><td>43  +</td><td>53  5</td><td>63  ?</td><td>73  I</td><td>83 S</td><td>93 ]</td><td>103 g</td><td>113 q</td><td>123 {</td></tr>
+		<tr><td>34  "</td><td>44  ,</td><td>54  6</td><td>64  @</td><td>74  J</td><td>84 T</td><td>94 ^</td><td>104 h</td><td>114 r</td><td>124 |</td></tr>
+		<tr><td>35  #</td><td>45  -</td><td>55  7</td><td>65  A</td><td>75  K</td><td>85 U</td><td>95</td><td>105 i</td><td>115 s</td><td>125 }</td></tr>
+		<tr><td>36  $</td><td>46  .</td><td>56  8</td><td>66  B</td><td>76  L</td><td>86 V</td><td>96 `</td><td>106 j</td><td>116 t</td><td>126 ~</td></tr>
+		<tr><td>37  %</td><td>47  /</td><td>57  9</td><td>67  C</td><td>77  M</td><td>87 W</td><td>97 a</td><td>107 k</td><td>117 u</td><td></td></tr>
+		<tr><td>38  &</td><td>48  0</td><td>58  :</td><td>68  D</td><td>78  N</td><td>88 X</td><td>98 b</td><td>108 l</td><td>118 v</td><td></td></tr>
+		<tr><td>39  '</td><td>49 1</td><td>59  ;</td><td>69  E</td><td>79  O</td><td>89 Y</td><td>99 c</td><td>109 m</td><td>119 w</td><td></td></tr>
+		<tr><td>40  (</td><td>50  2</td><td>60  <</td><td>70  F</td><td>80  P</td><td>90 Z</td><td>100 d</td><td>110 n</td><td>120 x</td><td></td></tr>
+		<tr><td>41  )</td><td>51  3</td><td>61  =</td><td>71  G</td><td>81  Q</td><td>91 [</td><td>101 e</td><td>111 o</td><td>121 y</td><td></td></tr>
+	</table>  	
+	<h2 id="creatingVariable">
+		Creating Variables
+	</h2>
+	<p>
+		A new variable is created with the following format:
+	</p>
+	 <p style="text-align: center;"><img src="/img/c2_p2.jpg"%></p>
+	 <p>
+	 	Examples:
+	 </p>
+	<pre>
+Boolean b;
+char letter3;
+int x;
+double unitPrices;</pre>
+	<p>
+		The name must start with a letter.  It can have numbers in it, as long as they are not the first character.  No other characters may be used.  By convention, we always start variable names with a lowercase letter.  Java does not require this, but it does make programs easier to read.
+	</p>
+	<h2 id="assignment">
+		Assignment Statements
+	</h2>
+	<p>
+		Once a variable has been created, it must be set to a specific value with an assignment statement before it can be used.  An assignment statement uses the assignment operator (=), and ends with a semicolon.  The value on the right side of the assignment operator is stored in the variable on the left side.
+	</p>
+	<p style="text-align: center;"><img src="/img/c2_p3.jpg"%></p>
+	<p>
+		When a variable is created, a section of memory is reserved.  Later in the program, when this variable name is used, it refers to the value in memory.  The number 65 is stored for the character 'A'.  Primitives store only numbers.  Aside from size, the difference between the different primitive types is the way the number is interpreted.  When a primitive variable is joined to a String with the concatenation operator, the value is converted to a String based on the variable's type.
+	</p>
+	<p>
+		A value can be assigned to a variable when it is created.  This is called initializing a variable.
+	</p>
+	<pre>
+boolean b = true;
+char letter3 = 'A';
+int x = 5;
+double unitPrice = 2.98;</pre>
+	<h2 id="mathematical">Mathematical operations </h2>
+	<p>
+		While the left side of an assignment statement must have only a single variable, the right side may include any number of constants, variables, and operations.
+	</p>
+	<pre>
+x = 4 + y / 7;</pre>			
+	<p>
+		The following mathematical operations are defined by Java:
+	</p>
+	<pre>
+Addition (+)
+Subtraction (-)
+Multiplication (*)
+Division (/)
+Modulo (%)</pre>
+	<P>
+		These operations can be performed on <code>ints</code> and <code>doubles</code>.  Addition, Subtraction, and multiplication behave the same for <code>ints</code> and <code>doubles</code>.  Division behaves differently for <code>ints</code> than it does for doubles.  The modulo operator can only be applied to <code>ints</code>.
+	</P>
+	<P>
+		An operator operates on the two numbers to either side of it.  If the two numbers surrounding an operator are both <code>ints</code>, the result of the operation must be an <code>int</code>.  This presents a problem when performing division on integers.  For example, the result of 5 divided by 2 is 2.5, which is not an integer.  
+	</P>
+	<P>
+		When an <code>int</code> is divided by another <code>int</code>, the result is the whole number part of the quotient.  That means the decimal portion is removed.  Note that the number is not rounded.  The examples below are not Java code.  The => symbol is being used to mean "results in".
+	</P>
+	<P>Examples:</P>
+	<pre>
+5 / 2 => 2
+20 / 6 => 3
+3 / 4 => 0</pre>
+	<p>
+		The modulo operator gives the decimal part of the division in the form of a remainder.
+	</p>
+	<P>
+		Examples:
+	</P>
+	<pre>
+5 % 2 => 1
+20 % 6 => 2
+3 % 4 => 3</pre>
+	<P>
+		Suppose you have some number of items and you wish to put them in groups.  
+	</P>
+	<ul>
+		<li>The result of integer division is the number of complete groups you can make.  </li>
+		<li>The result of the modulo operation is the number of left over items.</li>
+	</ul>
+	<p style="text-align: center;"><img src="/img/c2_p5.jpg"%></p>
+	<P>
+		If you wish to divide two integer constants and get a <code>double</code> for a result, enter one (or both) of the integers as <code>doubles</code>.
+	</P>
+	<p>
+		Examples:
+	</p>
+	<pre>
+5.0 / 2 => 2.5
+20 / 6.0 => 3.3333333...
+3.0 / 4.0 => 0.75</pre>
+	<p>
+		Of course, this can not be done when variables are used.
+	</p>
+	
+  <div class = "center">
+    Section 1 |
+    <a href="/chapter/2_2">Section 2 |</a></href>
+    <a href="/chapter/2_3">Section 3 |</a></href>
+  </div>

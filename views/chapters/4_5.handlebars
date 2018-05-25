@@ -1,0 +1,116 @@
+  <h1> Best Programming Practices - Section 5</h1>
+  <div class = "center">
+    <a href="/chapter/4_1">Section 1 |</a></href>
+    <a href="/chapter/4_2">Section 2 |</a></href>
+    <a href="/chapter/4_3">Section 3 |</a></href>
+    <a href="/chapter/4_4">Section 4 |</a></href>
+    Section 5 |
+  </div> 
+
+	<h2 id="FlowDiagrams">
+		Flow Diagrams
+	</h2>
+	<p>
+		The program below prints a different message depending upon the user input.  If the user enters “1”, the program prints one message.  If the user enters anything else, a different message is printed.
+	</p>
+	<pre>
+public class IfClass
+{
+    public static void main(String[] args)
+    {
+        java.util.Scanner input = new java.util.Scanner(System.in);
+        int x = 0;
+
+        System.out.println(“Pease enter a 1”);
+        x = input.nextInt();
+<strong>
+        if(x == 1)
+        {
+            System.out.println(“You entered 1”);
+        }
+        else
+        {
+            System.out.println(“That wasn’t a 1”);
+        }</strong>
+    }
+}</pre>
+	<p>
+		We can depict the flow of the if/else structure using a flow diagram.  The flow of program execution is shown by the arrows.
+	</p>
+	<p style="text-align: center;"><img src="/img/c4_p16.jpg"%></p>
+	<p>
+		A rectangular block is used to depict a line or block of code.
+	</p>
+	<p>
+		<p style="text-align: center;"><img src="/img/c4_p17_01.jpg"%></p>
+	</p>
+	<p>
+		An <code>if</code> statement is represented by a diamond.
+	</p>
+	<p>
+		<p style="text-align: center;"><img src="/img/c4_p17_02.jpg"%></p>
+	</p>
+	<p>
+		The diamond has two exit branches.  The true branch shows what happens if the condition is true.  This corresponds to the code inside the <code>if</code> braces.  The false branch shows what happens if the condition is false.  This corresponds to the code inside the <code>else</code> braces.
+	</p>
+	<p>
+		The two branches meet at a summing junction, represented by a circle, signifying the end of the <code>if</code> and <code>else</code> blocks.
+	</p>
+	<p style="text-align: center;"><img src="/img/c4_p17_03.jpg"%></p>
+	<p>
+		If the if statement has no else block, a line in the flow diagram shows that the program flow goes straight to the summing junction without doing anything.
+	</p>
+	<pre>
+if(x == 1)
+{
+	System.out.println("You entered 1");
+}</pre>
+	<p style="text-align: center;"><img src="/img/c4_p17_04.jpg"%></p>
+	<p>
+		Often, there are multiple ways to do one thing.  A flow diagram depicts the actual implementation that is used.  Compare the examples below.  Both examples set the variable a to 100 if x is positive, and to 0 if x is negative.  The code on the left uses two <code>if</code> statements in series.  The code on the right uses a single <code>if/else</code> structure.  This difference is apparent in the flow diagrams.
+	</p>
+	<p style="text-align: center;"><img src="/img/c4_p17_05.jpg"%></p>
+	<p>
+		The example below uses nested if statements.
+	</p>
+	
+	<div class="container-fluid2">
+  <div class="row">
+    <div class="col-sm-2" >
+	<pre>
+if(x == 0)
+{
+	if(y == 0)
+	{
+		a = 1;
+	}
+	else
+	{
+		a = 2;
+	}
+}
+else
+{
+	if(y == 0)
+	{
+		a = 3;
+	}
+	else
+	{
+		a = 4;
+	}
+}</pre>
+    </div>
+    <div class="col-sm-10">
+    	<p style="text-align: center;"><img src="/img/c4_p19.jpg"%></p>
+    </div>
+  </div>
+	</div>	
+	
+  <div class = "center">
+    <a href="/chapter/4_1">Section 1 |</a></href>
+    <a href="/chapter/4_2">Section 2 |</a></href>
+    <a href="/chapter/4_3">Section 3 |</a></href>
+    <a href="/chapter/4_4">Section 4 |</a></href>
+    Section 5 |
+  </div> 	

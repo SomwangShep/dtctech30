@@ -1,0 +1,145 @@
+  <h1> Best Programming Practices - Section 3</h1>
+  <div class = "center">
+    <a href="/chapter/4_1">Section 1 |</a></href>
+    <a href="/chapter/4_2">Section 2 |</a></href>
+     Section 3 |
+    <a href="/chapter/4_4">Section 4 |</a></href>
+    <a href="/chapter/4_5">Section 5 |</a></href>
+  </div> 
+  
+	<h2 id="MagicNumbers">
+		Magic Numbers
+	</h2>
+	<p>
+		Magic numbers are constants that appear in the code without any explanation.  They can cause a number of problems.
+	</p>
+	<p>
+		For example, suppose a program is supposed to take a price entered by a user, and add 5% sales tax.
+	</p>
+	<pre style="color:blue;">
+fullPrice = price + price * 0.05;</pre>
+	<p>
+		This line will compile and run, but if we need to look at the code later, we might wonder what that 0.05 was for.  Longer programs may have many such constants, and it is easy to forget what they were all for.  A better approach is to create a new variable for the value, and give it a meaningful name.  Then use that variable everywhere in place of the constant.
+	</p>
+	<pre style="color:blue;">
+double tax = 0.05;
+fullPrice = price + price * tax;</pre>
+	<p>
+		In addition, there are times when the same constant is used for more than one purpose.  For example, suppose you are writing some sort of baseball program.  The code has the number 9 in it in various places because that is the number of innings in the game.  It also uses the number 9 to specify the number of players on the field.  Suppose you decide to change the game so that it only has 5 innings, and you change all the 9's to 5's.  You might be surprised to find that you now only have 5 players on the field.
+	</p>
+	<p>
+		You may also find that you did not change every 9 in the program that does refer to innings.  If variables are created at the top of the program, one simple edit changes that value everywhere in the program.
+	</p>
+	<pre style="color:blue;">
+int innings = 5;
+int players = 9;</pre>
+	<p>
+		The Java <code>final</code> reserved word allows you to make a variable with a value that can not be changed by the program.  The value is initialized once when the variable is created.  After that, any attempt to change this value will result in an error.  If you know a value should remain constant, this is a good way to ensure that it does.  It is a common convention to use all uppercase characters when naming constants.
+	</p>
+	<pre style="color:blue;">
+final int INNINGS = 5;
+final int PLAYERS = 9;</pre>
+	<h2 id="DuplicateCode">
+		Duplicate Code
+	</h2>
+	<p>
+		Duplicate code is code that appears multiple times within a program, without any variation.  Consider the following program.
+	</p>
+	<h3>
+		Example Program – TreeTopInn
+	</h3>
+	<p>
+		This program calculates the cost to stay at an inn overnight.  The inn charges $50 per night during peak season and $30 per night during off season.  The program asks the user if the stay will be during peak season, and for how many nights.
+	</p>
+	<pre>
+Welcome to the Treetop Inn
+$50 a night during peak season
+or $30 a night off season.
+Will you be staying during peak season? yes
+Great!  For how many nights? 4
+Okay.  Your bill comes to $200</pre>
+	<p>
+		The example below will behave the way we want.
+	</p>
+	<pre>
+public class TreeTopInn
+{
+	public static void main(String[] args)
+	{
+		Scanner keyboard = new Scanner(System.in);
+		String input = "";
+		int nights = 0;
+		int bill = 0;
+
+		final int PEAKPRICE = 50;
+		final int OFFPRICE = 30;
+
+		System.out.println("Welcome to the Treetop Inn");
+		System.out.println("$50 a night during peak season");
+		System.out.println("or $30 a night off season.");
+		System.out.print("Will you be staying during peak season? ");
+		input = keyboard.next();
+
+		if(input.equals("yes"))
+		{
+			System.out.print("Great!  For how many nights? ");
+			nights = keyboard.nextInt();
+			bill = PEAKPRICE * nights;
+			System.out.println("Okay.  Your bill comes to $" + bill);
+		}
+		else
+		{
+			System.out.print("Great!  For how many nights? ");
+			nights = keyboard.nextInt();
+			bill = OFFPRICE * nights;
+			System.out.println("Okay.  Your bill comes to $" + bill);
+		}
+	}
+}</pre>
+	<p>
+		Three of the four lines in the <code>if</code> and <code>else</code> blocks are identical.  This makes the code unnecessarily long.  More importantly, as modifications are made to the code, or if errors are being fixed, it is easy to miss a piece of duplicate code.  This causes errors that only happen occasionally, which are harder to notice and fix.
+	</p>
+	<p>
+		With some small alterations, we can get rid of the duplicate code.  In the example below, one new variable has been created.  An int called price is set to either the peak price or the off season price depending upon the user's input.  This is the only line of code that needs to be in the if statement.  Since the price is initialized to the off season price ($30), there is no need for an else statement.  If the user does not choose peak season, the price will remain at $30.
+	</p>
+	<h3>
+		A Better TreeTopInn
+	</h3>
+	<pre>
+public class TreeTopInn
+{
+	public static void main(String[] args)
+	{
+		Scanner keyboard = new Scanner(System.in);
+		String input = "";
+		int nights = 0;
+		int bill = 0;
+
+		final int PEAKPRICE = 50;
+		final int OFFPRICE = 30;
+		int price = OFFPRICE;
+
+		System.out.println("Welcome to the Treetop Inn");
+		System.out.println("$50 a night during peak season");
+		System.out.println("or $30 a night off season.");
+		System.out.print("Will you be staying during peak season? ");
+		input = keyboard.next();
+
+		if(input.equals("yes"))
+		{
+			price = PEAKPRICE;
+		}
+		System.out.print("Great!  For how many nights? ");
+		nights = keyboard.nextInt();
+		bill = price * nights;
+		System.out.println("Okay.  Your bill comes to $" + bill);
+	}
+}</pre>
+	
+  <div class = "center">
+    <a href="/chapter/4_1">Section 1 |</a></href>
+    <a href="/chapter/4_2">Section 2 |</a></href>
+     Section 3 |
+    <a href="/chapter/4_4">Section 4 |</a></href>
+    <a href="/chapter/4_5">Section 5 |</a></href>
+  </div> 

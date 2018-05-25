@@ -1,0 +1,164 @@
+  <h1> Arrays - Section 2</h1>
+  <div class = "center">
+    <a href="/chapter/7_1">Section 1 |</a></href>
+    Section 2 |
+    <a href="/chapter/7_3">Section 3 |</a></href>
+  </div>
+  
+  <h2 id="SwappingElements">
+  	Swapping Elements
+  </h2>
+  <p>
+  	A common array task is swapping two elements.  That is, exchanging the locations of two elements.
+  </p>
+  <p style="text-align: center;"><img src="/img/c7_p5.jpg"%></p>
+  <p>
+  	The picture above shows the second element (index 1) swapped with the fourth element (index 3).  To swap the element values, we would like to do something like this:
+  </p>
+  <pre>
+array[1] = array[3];  <span style="color:red;">//This won't work</span>
+array[3] = array[1];</pre>
+  <p>
+  	But this will not work.  When the first line assigns the value at index 3 (14) to index 1, the old value at index 1 (26) is lost.  
+  </p>
+  <p>
+  	As an analogy, suppose you have a glass full of red water and a glass full of blue water, and want to swap the contents of the glasses.  That is, you want to put the red water in the blue glass and vice-versa.  If you try to pour the red water into the blue glass, the blue water needs to be poured out.  You need an extra glass to hold the blue water temporarily until the red glass is empty.  Likewise, to swap array elements, we need to create a variable to hold one of the values temporarily.
+  </p>
+  <p>
+  	Step 1: Put contents from first place into temp holder.<br/>
+		Step 2: Put contents from second place into first place.<br/>
+		Step 3: Put contents from temp holder into second place.
+  </p>
+  <p style="text-align: center;"><img src="/img/c7_p5_02.jpg"%></p>
+  <p>
+  	The example code below creates and initializes an array, and swaps the elements at indices 1 and 3.
+  </p>
+  <pre>
+int[] array = {3, 26, 8, 14, 49};
+int temp = 0;
+
+temp = array[1];
+array[1] = array[3];
+array[3] = temp;</pre>
+
+<h2 id="ThelengthParameterofArrays">
+	The length Parameter of Arrays
+</h2>
+<p>
+	There are times when we want to know the length of an existing array.  The length of any array can be accessed by following the array name with a period and the word length.
+</p>
+<pre>
+int[] smallArray = new int[8];
+System.out.println("The length of the array is " + <strong>smallArray.length)</strong>;</pre>
+<p style="text-align: center;"><img src="/img/c7_p6.jpg"%></p>
+
+<h2 id="UsingForLoopswithArrays">
+	Using For Loops with Arrays
+</h2>
+<p>
+	When dealing with arrays, there are often times we want to do the same thing to each element.  If we use the for loop variable as the array index, we can access all elements in order by writing the code to access one general element.
+</p>
+<p>
+	For example, suppose we want to set all the elements in an array called "value" to 1.  Without using a loop, the code would look like this:
+</p>
+<pre>
+value[0] = 1;
+value[1] = 1;
+value[2] = 1;
+…</pre>
+<p>
+	This is obviously a problem if the array is large, or if we don't know the size of the array in advance.  But if we write a more general statement for the i<sup>th</sup> element, rather than for a specific element,
+</p>
+<pre>
+value[i] = 1;</pre>
+<p>
+	we can put the statement inside a <code>for</code> loop, and the loop will set every element in the array.  
+</p>
+<pre>
+for(i = 0; i < value.length; i++)
+{
+	value[i] = 1;
+}</pre>
+<p>
+	As the example program below shows, for many array processing tasks, a <code>for</code> loop is used.
+</p>
+<h3>
+	Example Program - ArrayMaker
+</h3>
+<p>
+	This program creates an array of <code>ints</code>.  It prompts the user to enter the size of the array before creating it.  The program then uses a <code>for</code> loop to print each of the element default values.  It uses a second <code>for</code> loop to assign data to each element from the keyboard.  A third for <code>loop</code> is used to print the new element values.  Finally, the fourth for loop sums the values in the array.
+</p>
+<p style="text-align: center;"><img src="/img/c7_p7.jpg"%></p>
+<pre>
+import java.util.Scanner;
+
+public class ArrayMaker
+{
+	public static void main(String[] args)
+	{
+		Scanner keyboard = new Scanner(System.in);
+		int input = 0;
+		int total = 0;
+		int i = 0;
+
+		System.out.println("How big should the array be?");
+		input = keyboard.nextInt();
+		int[] value = new int[input];
+
+		<strong>// Print default values
+		for(i = 0; i < value.length; i++)</strong>
+		{
+			System.out.println("value " + i + " is " + value[i]);
+		}
+
+		<strong>// Assign new values
+		for(i = 0; i < value.length; i++)</strong>
+		{
+			System.out.println("Enter new value " + i);
+			value[i] = keyboard.nextInt();
+		}
+
+		<strong>// Print new values
+		for(i = 0; i < value.length; i++)</strong>
+		{
+			System.out.println("value " + i + " is " + value[i]);
+		}
+
+		<strong>// Add all values and print sum
+		for(i = 0; i < value.length; i++)</strong>
+		{
+			total = total + value[i];
+		}
+		System.out.println("The sum is " + total);
+	}
+}</pre>
+<p>
+	Notice that the program is written in a modular fashion.  Each code block performs one function, and sets up things for the next block.
+</p>
+<p>
+	As with <code>while</code> loops, the flow diagram symbol for a <code>for</code> loop is a diamond.  When the loop condition is <code>true</code>, the program flow loops back to the diamond.  The diagram below depicts a summing algorithm.
+</p>
+<p style="text-align: center;"><img src="/img/c7_p9.jpg"%></p>
+
+<h2 id="ApplicationsofArrays">
+	Applications of Arrays
+</h2>
+<p>
+	Once again, most array processing can be done using a <code>for</code> loop to step through the elements.  As always, the examples below are not the only ways to solve each problem.
+</p>
+<p>
+	 The code below calculates the sum of the elements in an array called <code>value</code>.  An <code>int</code> called <code>total</code> is created and initialized to 0.  Each pass through the loop, an element is added to the <code>total</code>, and the result is stored in <code>total</code>.  When the loop ends, the value of <code>total</code> is the sum of the array elements.  This value might be the program output, or it might be used in a following block of code.
+</p>
+<pre>
+int total = 0;
+
+for(i = 0; i < value.length; i++)
+{
+    total = total + value[i];
+}</pre>
+
+  <div class = "center">
+    <a href="/chapter/7_1">Section 1 |</a></href>
+    Section 2 |
+    <a href="/chapter/7_3">Section 3 |</a></href>
+  </div>

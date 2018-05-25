@@ -1,0 +1,256 @@
+  <h1> Methods - Section 1</h1>
+  <div class = "center">
+    Section 1 |
+    <a href="/chapter/8_2">Section 2 |</a></href>
+  </div>
+  
+  <h2>Methods</h2>
+  <p>
+  	<code>Every variable has a type</code>.  The type can be one of the eight primitive types (<code>int, double, boolean, char, long, short, float, byte</code>), or the type can be a <code>class</code>, like String or Scanner.  If a new variable is of a primitive type, an area of memory is reserved to hold the value to be stored
+  </p>
+  <p style="text-align: center;"><img src="/img/c8_p1.jpg"%></p>
+  <p>
+  	If the variable is of a <code>class</code> type, the data will not fit in one memory slot.  In this case, a larger area of memory is reserved elsewhere, and the number stored is the address of this larger area.  This sort of variable is often called a pointer, since it contains a number that points to the data rather than the data itself.  Another common name is reference variable, since the variable holds a reference to the data rather than the data itself.  If no initialization value is given, the value 0 (also called <code>null</code>) is stored.  We call this variable a <code>null</code> pointer.
+  </p>
+  <p style="text-align: center;"><img src="/img/c8_p1_02.jpg"%></p>
+  <p>
+  	(Technically, the number stored is not a memory address, but an object ID number that is associated with a memory location.)
+  </p>
+  <h2 id="CreatingObjects">
+  	Creating Objects
+  </h2>
+  <p>
+  	To reserve memory when creating a new object, we use the Java reserved word <code>new</code>.  In general, to create a new reference variable and object:
+  </p>
+  <p style="text-align: center;"><img src="/img/c8_p2.jpg"%></p>
+  <p>
+  	For example:
+  </p>
+  <pre>
+String firstName = new String("Harry");</pre>
+<p>
+	This creates a <code>new</code> object of the <code>class</code> String.  An object is an abstract concept.  Each object contains data.  In addition, these sets of data have related methods that control how they are used.  We say that an object is an instance of a <code>class</code>.  It is a specific example of the <code>class</code>.  In the example above, String is general.  There are many Strings.  On the other hand, <code>firstName</code> refers to a specific String object, which has the value Harry.  Technically, <code>firstName</code> is not the object.  It is a pointer or reference variable that is assigned to an object.  For convenience, it is common to simply refer to the reference variable as an object.
+</p>
+<p>
+	The statement above does several things in one line of code.  The example below does the same thing in two lines of code.  The first line creates a <code>new</code> variable of the type String.  The variable is a <code>null</code> pointer when created.  It is suitable to point to an object of the String class, but initially is not pointing to an object.  The second line creates a <code>new</code> String object, and assigns the object to the reference variable.  The variable is now pointing to the <code>new</code> String object.
+</p>
+<pre>
+String firstName;
+firstName = new String("Harry");</pre>
+<p>
+	A <code>new</code> object is created by calling a constructor.  A constructor is a special method that creates a new object and returns an object ID.  A constructor may require arguments, but always has the same name as the class.  The String constructor above requires a String.
+</p>
+<p>
+	All objects are created in the same way.  The line below creates a <code>new</code> Scanner object.
+</p>
+<pre>
+Scanner keyboard = new Scanner(System.in);</pre>
+<p>
+	There is a shorthand notation for creating a <code>new</code> String object.  A <code>new</code> String object can be created and assigned to a String variable using the assignment operator, just as if String were a primitive type.
+</p>
+<pre>
+String word = "Enterprise";</pre>
+<p>
+	This line is interpreted by the compiler as:
+</p>
+<pre>
+String word = new String("Enterprise");</pre>
+<p>
+	But this shortcut only works for Strings.
+</p>
+
+<h2 id="Methods">
+	Methods
+</h2>
+<p>
+	Classes contain methods.  Once we create an object of a <code>class</code>, we can call the methods from the <code>class</code> on the object.  For example, the <code>class</code> String contains a method called equals().  After creating a String object, we can call the equals() method on it.  We call a method on an object by following the reference variable with a period, and the method name.  The equals() method <code>returns</code> a value of <code>true</code> if the String argument (the String in the parentheses), equals the object the method is called on.  
+</p>
+<pre>
+String s = "apples";
+if( <strong>s.equals("apples")</strong> )
+{
+	System.out.println("Yum");
+}</pre>
+<p>
+	In the example above, the String <code>s</code> is compared to the String <code>apples</code>, and the method <code>returns true</code>.  
+</p>
+<p>
+	A class method has to be called "on an object".  That means the method name has to be preceded by a reference variable, and a period.  It doesn't make any sense to call the equals() method alone.
+</p>
+<pre>
+equals("apples");  	<span style="color:red;">// Don't do this</span></pre>
+<p>
+	The equals() method <code>returns true</code> if some String is equal to apples, but which String?  Class methods must always be called on an object of the appropriate type.  In this case, equals() must be called on a String object so the computer knows which String to compare its argument to.
+</p>
+<p>
+	Before calling a method on an object reference variable, the object must be created.  Otherwise the variable is a <code>null</code> pointer.  Attempting to call a method on a null pointer will cause a NullPointerException to be thrown and the program will exit.
+</p>
+<pre>
+String s;
+if(s.equals("apples"))	// NullPointerException</pre>
+
+<h2 id="MethodDescriptions">
+	Method Descriptions
+</h2>
+<p>
+	A method description is a single line explanation.  It specifies how a method can be used.
+</p>
+<pre>
+boolean equals(String otherString)</pre>
+<p>
+	This method description contains 3 pieces of information.
+</p>
+<ul>
+	<li>The method <code>return</code> type</li>
+	<li>The method name </li>
+	<li>The method argument list</li>
+</ul>
+<p>
+	All methods, except for constructors, have a <code>return</code> type.  The return type of a method is the type of value (int, double, String…) that will be sent back from the method when it is called.  The return type may be void, which indicates that the method does not return a value.  
+</p>
+<p>
+	The argument list specifies what needs to go in the parentheses when a method is called.  Some methods do not require any arguments, like the Scanner nextInt() method.  Other methods require one or more arguments, like equals().  
+</p>
+<p>
+	The argument list contains two pieces of information for each argument; the type of the argument, and a name explaining its function.  If the method requires multiple arguments, they are separated by commas.  The equals() method description specifies that to call equals(), you need to put one String in the parentheses.  The String was given the name otherString as a description, but you can use any String object (reference variable) or String constant.
+</p>
+<pre>
+boolean 	equals   	(String otherString)
+Return		Method		Argument
+type 			name 			list</pre>
+<p>
+	Some methods have more than one version.  A method that has multiple versions is said to be overloaded.  For example, the String class has more than ten constructors.  They all have the same name, String().  Below are the method descriptions for three of the String constructors.
+</p>
+<pre>
+String()
+String(String original)
+String(char[] letters)</pre>
+<p>
+	Note that no <code>return</code> type is given.  Constructors do not <code>return</code> a value and so they have no <code>return</code> type.  The first constructor creates a new empty String.  The second creates a new String containing the same character sequence as the String <code>original</code>.  The third constructor makes a new string containing the characters in the array <code>letters</code>.
+</p>
+<p>
+	Overloaded methods always have the same name, but have different argument lists, and <code>return</code> types.
+</p>
+
+<h2 id="Scanner">
+	Scanner (java.util.Scanner)
+</h2>
+<p>
+	Objects of the Scanner class are used to read from various sources such as the keyboard, or a file.  Descriptions of some of the Scanner class methods are listed below.
+</p>
+<h3>
+	Constructors
+</h3>
+<pre>
+Scanner(File source)
+Scanner(InputStream source)
+Scanner(String source)</pre>
+<h3>
+	Other methods
+</h3>
+<pre>
+String next()
+boolean nextBoolean()
+double nextDouble()
+int nextInt()
+String nextLine()</pre>
+<p>
+	Although three constructors are shown, we've always used the second one.  The object <code>System.in</code> is an object of the <code>class</code> InputStream.  However, we can see that a File or String can also be used to create a <code>new</code> Scanner.
+</p>
+
+<h2 id="Random">
+	Random (java.util.Random)
+</h2>
+<p>
+	The Random class is used to generate random numbers.  Its full name is java.util.Random, which must be imported.  Below are some of the methods contained in the Random class.
+</p>
+<h3>
+	Constructor
+</h3>
+<pre>
+Random()</pre>
+<h3>
+	Other methods
+</h3>
+<pre>
+double nextDouble()
+int nextInt(int values)</pre>
+<p>
+	The constructor requires no arguments, so to create a <code>new</code> random object:
+</p>
+<pre>
+Random generator = new Random();</pre>
+<p>
+	Once we have an object of the Random class, we can call methods from the Random <code>class</code> on it. 
+</p>
+<h4>double nextDouble()</h4>
+<p>
+	The nextDouble() method randomly generates and <code>returns a double</code> between 0 and 1; including 0, but not including 1.  So, it generates a number between 0 and .9999…
+</p>
+<pre>
+double randomNumber = generator.nextDouble();</pre>
+<p>
+	We can use the <code>returned</code> vale in mathematical expressions to obtain random numbers in a particular range.  The line below generates a number between 0 and 10 (0 to 9.9999…).
+</p>
+<pre>
+double score = generator.nextDouble() * 10;</pre>
+<h3>int nextInt(int values)</h3>
+<p>
+	The nextInt() method works differently.  It requires one argument, which specifies the number of values that can be generated.  The lowest possible value is always 0.  The highest possible value is one less than the argument <code>values</code>.  
+<br/>For example, if the argument is 2, then 2 different values can be generated (0, and 1).  If 6 is used as an input argument, there are 6 possible <code>return</code> values (0, 1, 2, 3, 4, 5).
+</p>
+<pre>
+int coinFlip = generator.nextInt(2);</pre>
+<p>
+	As is the case with random <code>doubles</code>, the <code>returned</code> value can be used in an expression.  The line below generates integers between 1 and 6.
+</p>
+<pre>
+int dieRoll = generator.nextInt(6) + 1;</pre>
+<p>
+	The next line generates an integer between -5 and 5.
+</p>
+<pre>
+int xCoordinate = generator.nextInt(11) - 5;</pre>
+<p>
+	This line generates even integers from 2 to 10.
+</p>
+<pre>
+int even = generator.nextInt(5) * 2 + 2;</pre>
+<p>
+	The following example program creates an array that holds 5 <code>ints</code>.  A random number from 1 to 6 is generated for each element.  Then one of the three random numbers is given to the user.
+</p>
+<pre>
+import java.util.Random;
+
+public class DieRoller
+{
+	public static void main(String[] args)
+	{
+		Random generator = new Random();	// Number generator
+		int[] die = new int[5];				// Five dice
+		int playersIndex;					// Die the player gets
+		int playersDie;						// Number on that die
+
+		// Roll 5 dice
+		System.out.println("Rolling 5 dice...");
+		for(int i = 0; i < die.length; i++)
+		{
+			die[i] = generator.nextInt(6) + 1;
+			System.out.println("Die " + (i + 1) + " is a " + die[i]);
+		}
+
+		// Randomly choose which of the 5 dice the player gets
+		playersIndex  = generator.nextInt(5);
+		System.out.println("\nPlayer gets die " + (playersIndex + 1));
+
+		// Get the die roll from the array
+		playersDie = die[playersIndex];
+		System.out.println("You get a " + playersDie);
+	}
+}</pre>
+<p style="text-align: center;"><img src="/img/c8_p8.jpg"%></p>
+
+  <div class = "center">
+    Section 1 |
+    <a href="/chapter/8_2">Section 2 |</a></href>
+  </div>

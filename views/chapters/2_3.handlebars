@@ -1,0 +1,227 @@
+  <h1> Variables - Section 3</h1>
+  
+  <div class = "center">
+  	<a href="/chapter/2_1">Section 1 |</a></href>
+    <a href="/chapter/2_2">Section 2 |</a></href>
+     Section 3 |
+  </div> 
+  
+	<h2 id="userInputJump">
+		User Input
+	</h2>
+	<p>
+		Programs are much more interesting if they do something different each time they run.  We can detect and receive keyboard input by creating an object of the Scanner class.  The Scanner object only needs to be created once.  After that, we can use the same Scanner object each time we read from the keyboard.  We will discuss the creation of objects in detail in a later chapter.  For now, the following line will create a new Scanner object.
+	</p>
+	<pre>
+Scanner keyboard = new Scanner(System.in);</pre>
+	<P>
+		As with all objects, we need to create a reference variable that points to the object.  This reference variable can have any valid variable name.  Above, the variable name is <code>keyboard</code>, but we could have used <code>input</code>, or <code>myScanner</code>, or <code>fruitSaLaD26</code>.
+	</P>
+	<pre>
+Scanner fruitSaLaD26 = new Scanner(System.in);</pre>
+	<p>
+		However, <code>keyboard</code> is a better name for a Scanner variable that reads from the keyboard.
+	</p>
+	<p>
+		Scanner is a class that is part of the Java language.  Most of the time, the program has to specify where the computer can find classes.  This isn't the case for Strings because they are used so commonly.  The following line typed before the beginning of the class will tell the compiler where to find the Scanner class.
+	</p>
+	<pre>
+import java.util.Scanner;</pre>
+	<h2 id="scannerJump">
+		Scanner methods
+	</h2>
+	<p>
+		We use a Scanner object by "calling methods on it".  That means we follow the variable with a period and one of the methods listed below.  
+	</p>
+	<pre>
+next()					Reads the next word
+nextInt()				Reads the next int
+nextDouble()		Reads the next double
+nextLine()  		Reads the next line</pre>
+	<p>
+		When a Scanner method is called, we say that the program blocks.  That means the program will pause and wait for the user to type.  Once the user presses the Enter key, the method stops blocking and program execution continues.  When the user presses Enter, and the method completes, we say the method returns a value.  That means that the method call is replaced with the value that was entered.  If we assign this returned value to a variable, we can use it later in the program.
+	</p>
+	<h3>
+		Example Program – ScanTester 
+	</h3>
+	<pre>
+import java.util.Scanner;
+
+public class ScanTester
+{
+	public static void main(String[] args)
+	{
+		<strong>Scanner keyboard = new Scanner(System.in);</strong>
+		String name = "";
+		int age = 0;
+		double gpa = 0.0;
+
+		System.out.println("Hi there.  What's your first name?");
+		<strong>name = keyboard.next();</strong>
+
+		System.out.println("Hi " + name + ".  How old are you?");
+		<strong>age = keyboard.nextInt();</strong>
+
+		System.out.println("I see. " + age + " Your current GPA?");
+		<strong>gpa = keyboard.nextDouble();</strong>
+
+		System.out.println(gpa + ".  That's Super. " + name);
+	}
+}</pre>
+	<p style="text-align: center;"><img src="/img/c2_p11.jpg"%></p>
+	<p>
+		When a user types on the keyboard, characters are stored in the keyboard buffer.  The next() method looks past any whitespace in the keyboard buffer to find the next word.  It removes the next word and returns the characters to the program.  Any remaining characters are left in the buffer for the next Scanner method call.  The nextInt() and nextDouble() methods also find the next word, but convert the String into numbers before returning so that the values can be stored as numbers for calculations.  Since these three methods only read one word at a time and leave any remaining input in the keyboard buffer, a user could run the previous program, and enter all three pieces of information on one line.
+	</p>
+	<p style="text-align: center;"><img src="/img/c2_p12.jpg"%></p>
+	<p>
+		The nextLine() method is the oddball of the group.  It reads everything typed up to the newline character, which it discards.  This allows the user to enter multiple words.  However, a problem occurs if nextLine() is called after next(), nextInt(), or nextDouble(), because these methods leave the newline character from the Enter key in the keyboard buffer.  The nextLine() method will read this newline character and continue without giving the user a chance to enter anything.  An extra call to nextLine() can be used to remove the newline character left by another method call.
+	</p>
+	<h3>
+		Example
+	</h3>
+	<pre>
+import java.util.Scanner;
+
+public class ScanTester
+{
+	public static void main(String[] args)
+	{
+		Scanner keyboard = new Scanner(System.in);
+		String name = "";
+		String book = "";
+		int year = 0;
+		String movie = "";
+
+		System.out.println("Hi there.  What's your name?");
+		name = keyboard.nextLine();
+
+		System.out.println("What's your favorite book?");
+		book = keyboard.nextLine();
+
+		System.out.println("I've never heard of " + book + " " + name);
+		System.out.println("What year was it written in?");
+		<strong>year = keyboard.nextInt();</strong>
+
+		System.out.println("Huh...  If you say so.  Favorite movie?");
+		<strong>keyboard.nextLine();</strong>
+		movie = keyboard.nextLine();
+		System.out.println("You're weird.");
+	}
+}</pre>
+	<p style="text-align: center;"><img src="/img/c2_p13.jpg"%></p>
+	<h2 id="programJump">
+		Program Execution
+	</h2>
+	<p>
+		As a program runs, the values of the variables change.  When calculating the value for an assignment statement, always use the current values for variables, which are not necessarily the same as the starting values.
+	</p>
+	<p>
+		An assignment statement is used to set the value of a variable to whatever is on the right side of the equals sign.  This expression might include other variables.  It also might include the variable on the left of the assignment.  The old value of the variable is used to determine the new value.
+	</p>
+	<h3>
+		Example
+	</h3>
+	<p>
+		What are the values of x and y after the following code runs?
+	</p>
+	<pre>
+int x = 0;
+int y = 2;			<strong>x = 0, y = 2</strong>
+
+x = (5 + 3) / 2;		<strong>x = 4, y = 2</strong>
+y = x – 1;			<strong>x = 4, y = 3</strong>
+x = x + 1;			<strong>x = 5, y = 3</strong>
+y = y + x;			<strong>x = 5, y = 8</strong>
+
+<strong>x = 5, and y = 8</strong></pre>
+	<h2 id="calJump">
+		Calculating Programs
+	</h2>
+	<p>
+		Using variables and mathematical operators, we can write simple programs that calculate things based on user input.
+	</p>
+	<h3>
+		Example - Budget
+	</h3>
+	<pre>
+import java.util.Scanner;
+
+public class Budget
+{
+	public static void main(String[] args)
+	{
+		int pay = 0;
+		int car = 0;
+		int rent = 0;
+		int electricity = 0;
+		int food = 0;
+		int money = 0;
+		Scanner keyboard = new Scanner(System.in);
+
+		System.out.println("*** The Budget Program ***\n");
+		System.out.println("Enter whole dollar amounts");
+
+		System.out.print("How much do you make each month? $");
+		<strong>pay = keyboard.nextInt();</strong>
+
+		System.out.print("How much is your car payment? $");
+		<strong>car = keyboard.nextInt();</strong>
+
+		System.out.print("How much is your rent/mortgage payment? $");
+		<strong>rent = keyboard.nextInt();</strong>
+
+		System.out.print("How much is your electricity payment? $");
+		<strong>electricity = keyboard.nextInt();</strong>
+
+		System.out.print("How much do you spend on food each month? $");
+		<strong>food = keyboard.nextInt();</strong>
+
+		<strong>money = pay - car - rent - electricity - food;</strong>
+
+		System.out.println("You have $" + money + " left.");
+	}
+}</pre>
+	<p style="text-align: center;"><img src="/img/c2_p15.jpg"%></p>
+	<p>
+		This program could be written using fewer variables as shown below.
+	</p>
+	<pre>
+import java.util.Scanner;
+
+public class Budget
+{
+	public static void main(String[] args)
+	{
+		int <strong>money</strong> = 0;
+		Scanner keyboard = new Scanner(System.in);
+
+		System.out.println("*** The Budget Program ***\n");
+		System.out.println("Enter whole dollar amounts");
+
+		System.out.print("How much do you make each month? $");
+		<strong>money = keyboard.nextInt();</strong>
+
+		System.out.print("How much is your car payment? $");
+		<strong>money = money - keyboard.nextInt();</strong>
+
+		System.out.print("How much is your rent/mortgage payment? $");
+		<strong>money = money - keyboard.nextInt();</strong>
+
+		System.out.print("How much is your electricity payment? $");
+		<strong>money = money - keyboard.nextInt();</strong>
+
+		System.out.print("How much do you spend on food each month? $");
+		<strong>money = money - keyboard.nextInt();</strong>
+
+		System.out.println("You have $" + <strong>money</strong> + " left.");
+	}
+}</pre>
+	<p>
+		Some programs may require that the numbers be kept separate for later calculations.  Deciding how many variables to use in a program is one of the many choices a programmer must make for each program. 
+	</p>
+
+  <div class = "center">
+  	<a href="/chapter/2_1">Section 1 |</a></href>
+    <a href="/chapter/2_2">Section 2 |</a></href>
+     Section 3 |
+  </div> 

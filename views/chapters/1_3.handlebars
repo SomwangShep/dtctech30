@@ -1,0 +1,111 @@
+  <h1> Introduction - Section 3</h1>
+  <div class = "center">
+    <a href="/chapter/1_1">Section 1 |</a></href>
+    <a href="/chapter/1_2">Section 2 |</a></href>
+    Section 3 |
+    <a href="/chapter/1_4">Section 4 |</a></href>
+  </div>  
+  
+  <h3 id="TheEscapeCharacterandEscapeSequences">
+    The Escape Character and Escape Sequences
+  </h3>
+  <p>
+    You can use any letters, numbers, or symbols you like in a String.
+  </p>
+  <pre>
+String nonsense = "@-_+';(:)*&^%$#!?.,{}[]|";</pre>
+  <p>
+    There are only two characters you can not use in a String.
+  </p>
+  <p>
+    You can not use a quotation mark (") in a String because it will signal the end of the String.  The compiler will see the rest of the String as garbage and complain.
+  </p>
+  <pre>
+String bad = "some text " looks like garbage";</pre>
+  <p>
+    The other character that can not be used normally is the backslash (\) because it is used as an escape character.  An escape character tells the compiler not to read and print the character normally, but to treat the next character as part of it.  An escape sequence is a combination of two or more characters that start with an escape character and are treated as a single character.
+    <br/>For example, if we want to put a quotation mark in our String, we can use the \" escape sequence.  Similarly, if we want to put a backslash character in a String, we use \\.  The box below shows some of the Java escape sequences.
+  </p>
+  <table class="customers">
+    <th>Java Escape Sequences</th>
+    <tr><td>\"</td><td>Quotation mark</td></tr>
+    <tr><td>\\</td><td>Backslash</td></tr>
+    <tr><td>\n</td><td>Newline</td></tr>
+    <tr><td>\t</td><td>Tab</td></tr>
+    <tr><td>\b</td><td>Backspace</td></tr>
+    <tr><td>\uxxxx</td><td>Unicode character</td></tr>
+  </table>
+  
+  <p>
+    The newline character moves the cursor to the beginning of the next line.  The next thing printed will begin there.  A tab advances the cursor to the next tab stop.  The backspace character moves the cursor back one character so that the next time something is printed, it will replace the current text.  The <code>\u</code> character lets us specify a Unicode character value, where the xxxx above is replaced by a Unicode value.  For example, 0007 is the Unicode value for the system beep.
+  </p>
+  <h3>
+    Example Program - EscapeSequences
+  </h3>
+  <pre>
+public class EscapeSequences
+{
+	public static void main(String[] args)
+	{
+		String quote = "Quoath the raven \"nevermore\"";
+		String lines = "One fish\nTwo fish\nOld fish\nNew fish";
+		String scores = "100\t95\t92\t100\t98";
+		String path = "C:\\Courses\\Java\\Projects\\";
+		String spell = "Mistakk\b\bke fixed";
+		String beep = "Warning!!!\u0007";
+
+		System.out.println(quote);
+		System.out.println(lines);
+		System.out.println(scores);
+		System.out.println(path);
+		System.out.println(spell);
+		System.out.println(beep);
+	}
+}</pre>
+  <p style="text-align: center;"><img src="/img/c1_p11.jpg"%></p>
+  <h2 id="System.out">
+    System.out.println() and System.out.print()
+  </h2>
+  <p>
+    There are two ways to print a String to the console.  The System.out.print() method prints the String, and leaves the cursor right after it.  The next String printed will continue on the same line.  The System.out.println() method adds a newline to the end of the String moving the cursor to the next line after printing.  The next String printed will start on this new line.
+  </p>
+  <pre>
+public class Printing
+{
+	public static void main(String[] args)
+	{
+		String s1 = "One";
+		String s2 = "Two";
+		String s3 = "Three";
+
+		System.out.print(s1);
+		System.out.print(s2);
+		System.out.print(s3);
+		System.out.println(s1);
+		System.out.println(s2);
+		System.out.println(s3);
+	}
+}</pre>
+  <p style="text-align: center;"><img src="/img/c1_p12.jpg"%></p>
+  <h2 id="JavaReservedWords">
+    Java Reserved Words
+  </h2>
+  <p>
+    When choosing class names and variable names, there are certain words that are not allowed, such as "class" or "public".  These reserved words (or key words) words already have a specific meaning in Java
+  </p>
+	<table class="customers"> 
+		<tr><td>abstract</td><td>char</td><td>else</td><td>goto</td><td>long</td><td>return</td><td>this</td><td>while</td></tr>
+		<tr><td>assert</td><td>class</td><td>enum</td><td>if</td><td>native</td><td>short</td><td>throw</td><td></td></tr>
+		<tr><td>boolean</td><td>const</td><td>extends</td><td>implements</td><td>new</td><td>static</td><td>throws</td><td></td></tr>
+		<tr><td>break</td><td>continue</td><td>for</td><td>import</td><td>package</td><td>strictfp</td><td>transient</td><td></td></tr>
+		<tr><td>byte</td><td>default </td><td>final</td><td>instanceof</td><td>private</td><td>super</td><td>try</td><td></td></tr>
+		<tr><td>case</td><td>do</td><td>finally</td><td>int</td><td>protected</td><td>switch</td><td>void</td><td></td></tr>
+		<tr><td>catch </td><td>double</td><td>float</td><td>interface</td><td>public</td><td>synchronized</td><td>volatile</td><td></td></tr>
+	</table> 
+	
+  <div class = "center">
+    <a href="/chapter/1_1">Section 1 |</a></href>
+    <a href="/chapter/1_2">Section 2 |</a></href>
+    Section 3 |
+    <a href="/chapter/1_4">Section 4 |</a></href>
+  </div>

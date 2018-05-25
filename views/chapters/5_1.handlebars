@@ -1,0 +1,129 @@
+  <h1> While Loops - Section 1</h1>
+  <div class = "center">
+    Section 1 |
+    <a href="/chapter/5_2">Section 2 |</a></href>
+  </div>
+  
+  <h2>While Loops</h2>
+  <p>
+  	A <code>while</code> loop is a repetition structure.  It causes a block of code to run again and again as long as some condition is true.  The condition is placed in parentheses after the word <code>while</code>.  In the example below, the condition will always be <code>true</code>, so the line of code inside the braces will repeat until the program is terminated.
+  </p>
+  <pre>
+while(1 == 1)
+{
+	System.out.println("And I'll say it again,");
+}</pre>
+  <p style="text-align: center;"><img src="/img/c5_p1.jpg"%></p>
+  <p>
+  	Equivalently, we could have used true as a condition.
+  </p>
+  <pre>
+while(true)
+{
+	System.out.println("And I'll say it again,");
+}</pre>
+  <p>
+  	Note that a semicolon is <strong>not</strong> placed after the <code>while</code> statement.  The while statement only affects the next thing that follows it. We want that next thing to be a block of code in braces.  If a semicolon is put after the while statement, the semicolon will be seen as the next thing.  Everything before the semicolon (nothing) will repeat again and again forever.  The block with the print statement will never be reached.
+  </p>
+  <pre>
+while(true);    <strong>Don't do this</strong>
+{
+	System.out.println("And I'll say it again,");
+}</pre>
+  <p>
+  	A loop that never ends is often called an "infinite loop", and is usually considered undesirable, especially if it doesn't do anything to indicate it is running.  Usually, the loop is designed so that something happens inside changing the condition, and ending the loop.  
+  </p>
+  <pre>
+int x = 1;
+<strong>while(x < 6)</strong>
+{
+	System.out.println("Counting, " + x);
+	x = x + 1;
+}</pre>
+  <p>
+  	In the example above, x is initialized to 1.  When the loop is reached for the first time, the condition is <strong>true</strong>.  1 is less than 6.  The block inside the <strong>while</strong> braces runs printing the line
+  </p>
+  <pre>
+Counting, 1</pre>
+  <p>
+  	and incrementing the value of x to 2.  When the closing brace is reached, the <strong>while</strong> condition is checked again.  Since it is still <strong>true</strong> (2 is less than 6), the block runs again.
+  </p>
+  <p style="text-align: center;"><img src="/img/c5_p2.jpg"%></p>
+	<p>
+		The fifth time the block runs, "Counting, 5" is printed, and x is incremented from 5 to 6.  When the closing brace of the <code>while</code> loop is reached, the condition is <code>false</code>.  6 is not less than 6.  The loop ends, and the program continues.
+	</p>
+	<p>
+		The <code>while</code> loop condition is checked before each pass through the loop, including the first.  
+	</p>
+	<p>
+		The <code>while</code> loop is particularly useful if we don't know in advance how many times the loop will repeat.  The following program plays a coin flip game with the user.  After each game, the user is asked to play again.  If the answer is not "y", the program ends.
+	</p>
+	<pre>
+import java.util.Scanner;
+
+public class CoinFlip
+{
+	public static void main(String[] args)
+	{
+		Scanner in = new Scanner(System.in);
+		<strong>String playAgain = "y";</strong>
+		String guess;
+
+		<strong>while(playAgain.equals("y"))</strong>
+		{
+			System.out.println("I flip it, you call it.");
+			System.out.println("h for heads, t for tails.");
+			guess = in.nextLine();
+
+			if(guess.equals("h"))
+			{
+				System.out.println("You lose.  It was tails.");
+			}
+			else
+			{
+				System.out.println("You lose.  It was heads.");
+			}
+
+			System.out.println("Play again? (y or n)");
+			<strong>playAgain = in.nextLine();</strong>
+		}
+	}
+}</pre>
+	<p>
+		When the program starts, the String variable <code>playAgain</code> is initialized to "y".  As long as this is <code>true</code>, the <code>while</code> loop will repeat.  At the end of each game, the user is asked to play again.  If the user types anything but "y", the <code>while</code> loop will end.  This loop might run once, or thousands of times depending on the user.  
+	</p>
+	<p>
+		As with <code>if</code> structures, <code>while</code> loops can be nested inside each other.  The inner loop will run through all of its repetitions for each pass of the outer loop.
+	</p>
+	<pre>
+int cards;
+while(playAgain.equals("y"))
+{
+	cards = 0;
+	while(cards < 5)
+	{
+		cards = cards + 1;
+	}
+}</pre>
+	<p>
+		The <code>break</code> statement causes the current loop to exit immediately.  The program continues after the loop.  Note that a <code>break</code> statement is used within a loop.  It can not be used to exit an <code>if</code> or <code>else</code> block outside of a loop.
+	</p>
+	<pre>
+int x = 0;
+while(true)
+{
+	x = x + 1;
+	if(x > 25)
+	{
+		<strong>break;</strong>
+	}
+}
+System.out.println("x exceeds 25");</pre>
+	<p>
+		If used in nested loops, the break statement only exits the innermost loop.  There are times when the break statement is particularly convenient, but the preferred method of exiting a loop is to build the exit condition into the design of the loop.
+	</p>
+
+  <div class = "center">
+    Section 1 |
+    <a href="/chapter/5_2">Section 2 |</a></href>
+  </div>

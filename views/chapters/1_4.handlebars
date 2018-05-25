@@ -1,0 +1,175 @@
+  <h1> Introduction - Section 4</h1>
+  <div class = "center">
+    <a href="/chapter/1_1">Section 1 |</a></href>
+    <a href="/chapter/1_2">Section 2 |</a></href>
+    <a href="/chapter/1_3">Section 3 |</a></href>
+    Section 4 |
+  </div>
+  
+	<h2 id="SyntaxErrors">
+	  Syntax Errors
+	</h2>
+	<p>
+	  When the compiler tries to compile a source file, it will complain if it finds an error.  The compiler can only catch certain types of errors called syntax errors, or compiler errors.  A syntax error occurs when a line does not follow the rules for the language.  For example, the following sentence does not use proper English syntax.
+	</p>
+	<p style="text-align: center;">
+	  <code>in rained. Spain It are</code>
+	</p>
+	<p>
+	  When the compiler encounters an error in syntax, it prints an error message.  Often, the compiler will report multiple errors when trying to compile.  Always fix the error at the top of the list first.  The earlier errors may be causing the later errors.
+	</p>
+  <p>
+    Each error message is preceded by the file name and line number.  In the following example, an error was found in the file Syntax.java on line 6.  The error message states that a semicolon was expected and not found.
+  </p>
+  <p style="text-align: center;"><img src="/img/c1_p13.jpg"%></p>
+  <h3>
+    Syntax Error Example 1
+  </h3>
+  <p>
+    The sixth line is missing the semicolon at the end.
+  </p>
+  <pre>
+public class Syntax
+{
+	public static void main(String[] args)
+	{
+		String s = "A String";
+		<atrong>System.out.println(s)</strong>
+	}
+}</pre>
+  <p>
+    The compiler error says a semicolon was expected on line 6
+  </p>
+  <pre style = "color:red">
+C:\projects\Syntax\Syntax.java:6: ';' expected
+		System.out.println(s)
+		                     ^
+1 error
+  
+Tool completed with exit code 1</pre>
+  <h3>
+    Syntax Error Example 2
+  </h3>
+  <p>
+    The opening parenthesis is missing on the fifth line.
+  </p>
+  <pre>
+public class Syntax
+{
+	public static void main(String[] args)
+	{
+		<strong>System.out.println"A String");</strong>
+	}
+}</pre>
+  <p>
+    The compiler says line 5 is not a statement, and that a semicolon was expected.  Note that the compiler noticed that something was wrong on line 5, but did not know what.
+  </p>
+  <pre style = "color:red">
+C:\projects\Syntax\Syntax.java:5: not a statement
+		System.out.println"A String");
+		          ^
+C:\projects\Syntax\Syntax.java:5: ';' expected
+		System.out.println"A String");
+		                  ^
+2 errors</pre>
+  <h3>
+    Syntax Error Example 3
+  </h3>
+  <p>
+    The closing brace is missing on the sixth line.  
+  </p>
+  <Pre>
+public class Syntax
+{
+	public static void main(String[] args)
+	{
+		System.out.println("A String");
+
+}</Pre>
+  <p>
+    The compiler doesn't notice the error until line 7.  Sometimes the line given in an error message is several lines after the actual error.
+  </p>
+  <pre style = "color:red">
+C:\projects\Syntax\Syntax.java:7: reached end of file while parsing
+}
+ ^
+1 error</pre>
+  <h3>
+    Syntax Error Example 4
+  </h3>
+  <p>
+    The word println is misspelled.
+  </p>
+  <pre>
+public class Syntax
+{
+	public static void main(String[] args)
+	{
+		System.out.printLn("A String");
+	}
+}</pre>
+  <p>
+  The compiler doesn't recognize the symbol println because it is spelled wrong.  Java is case sensitive, so println and printLn are two different words.
+  </p>
+  <pre  style = "color:red">
+C:\projects\Syntax\Syntax.java:5: cannot find symbol
+symbol  : method printLn(java.lang.String)
+		System.out.printLn("A String");
+		          ^
+1 error</pre>
+  <h2 id="AsciiArt">
+    Ascii Art
+  </h2>
+  <p>
+    Ascii art refers to pictures drawn using text characters.  Don't forget to use escape sequences for backslashes and quotation marks (\\ and \").
+  </p>
+  <h3>
+    Example Program - AsciiArt
+  </h3>
+  
+<!----- table -->
+<div class="container-fluid"> 
+  <div class="row">
+    <div class="col-sm-8">
+  <pre>
+public class AsciiArt
+{
+	public static void main(String[] args)
+	{
+		System.out.println(" _________________________________");
+		System.out.println("|    ____   _____ ______________ |");
+		System.out.println("|   / _  | / ___// ____/  _/  _/ |");
+		System.out.println("|  / /_| | \\__ \\/ /    / / / /   |");
+		System.out.println("| / /__| | __/ / /___ / / / /    |");
+		System.out.println("|/_/   |_/____/\\____/___/___/    |");
+		System.out.println("|         /\\__/\\                 |");
+		System.out.println("|        (  - - )                |");
+		System.out.println("|         \\  ^ /                 |");
+		System.out.println("|          |   \\                 |");
+		System.out.println("|          |    \\______          |");
+		System.out.println("|          |  _    ---\\\\         |");
+		System.out.println("|         (\"_| (\"_|    v         |");
+		System.out.println("|WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW|");
+		System.out.println("|================================|");
+		System.out.println("|==========ASCII=================|");
+		System.out.println("|=============KITTY==============|");
+		System.out.println("|--------------------------------|");
+	}
+}</pre>
+
+    </div>
+    <div class="col-sm-4">
+      <br/> <br/> <br/> <br/> <br/>
+       <p style="text-align: center;"><img src="/img/c1_p16.jpg"%></p>
+    </div>
+  </div>
+</div>
+
+<!-- End table -->	
+  
+  <div class = "center">
+    <a href="/chapter/1_1">Section 1 |</a></href>
+    <a href="/chapter/1_2">Section 2 |</a></href>
+    <a href="/chapter/1_3">Section 3 |</a></href>
+    Section 4 |
+  </div>

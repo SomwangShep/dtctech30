@@ -1,0 +1,270 @@
+  <h1> Best Programming Practices - Section 2</h1>
+  <div class = "center">
+    <a href="/chapter/4_1">Section 1 |</a></href>
+    Section 2 |
+    <a href="/chapter/4_3">Section 3 |</a></href>
+    <a href="/chapter/4_4">Section 4 |</a></href>
+    <a href="/chapter/4_5">Section 5 |</a></href>
+  </div>
+  
+	<h2 id="Comments">
+		Comments
+	</h2>
+	<p>
+		A comment is a line or block of text that is ignored by the compiler.  Comments are used by programmers to leave notes for themselves and others to explain code.  Java supports two types of comments; line comments and block comments.
+	</p>
+	<p>
+		Programs should always include comments where useful.  Most of the small examples in this book do not include comments to make the examples shorter.
+	</p>
+	<p>
+		A line comment is indicated with a double slash (//).  The comment can start at the beginning of a line, or following some code.  All characters following the double slash will be ignored by the compiler.  Line comments are often used for commenting variables and for short headings.
+	</p>
+	<pre>
+// This is a line comment</pre>
+	<p>
+		Well-commented Code
+	</p>
+	<pre>
+public class Favorites
+{
+	public static void main(String[] args)
+	{
+		// Variables
+		Scanner keyboard = new Scanner(System.in);
+
+		int guess = 0;		// User's guess
+
+		// Get guess from user
+		System.out.println("I have two favorite numbers.");
+		System.out.println("Try to guess one.");
+		guess = keyboard.nextInt();
+
+		// Check guess
+		if(guess == 7 || guess == 15)
+		{
+			System.out.println("That is one of my favorites.");
+		}
+		else
+		{
+			System.out.println("Not one of my favorites.");
+		}
+	}
+}</pre>
+	<p>
+		Block comments begin with a slash asterisk sequence (/*), and end with an asterisk slash sequence (*/).  Like a line comment, a block comment can start at the beginning of a line, or after some code.  Unlike a line comment, a block comment can begin and end on the same line.
+	</p>
+	<pre>
+/* This is a comment */  x = 5;</pre>
+	<p>
+		The assignment x = 5 will not be ignored by the compiler.  Block comments are used for title blocks and other multiline comments.
+	</p>
+	<pre>
+/***************************************************
+* Favorites.java
+*                                  
+* Programmer: Bob Bobertson
+* Date: 6-30-2009
+* Version 1.0
+*
+* Program Description: This program asks the user
+* enter a number.  It then determines if that
+* number is a 7 or 15, and informs the user.
+*
+***************************************************/
+
+import java.util.Scanner;
+
+public class Favorites
+{
+	public static void main(String[] args)
+	{
+		<strong>// Variables
+		/* The Scanner variable is used to read
+		   user input from the keyboard. */</strong>
+		Scanner keyboard = new Scanner(System.in);
+
+		int guess = 0;		<strong>// User's guess</strong>
+
+		<strong>// Get guess from user</strong>
+		System.out.println("I have two favorite numbers.");
+		System.out.println("Try to guess one.");
+		guess = keyboard.nextInt();
+
+		<strong>// Check guess</strong>
+		if(guess == 7 || guess == 15)
+		{
+			System.out.println("That is one of my favorites.");
+		}
+		else
+		{
+			System.out.println("Not one of my favorites.");
+		}
+	}
+}</pre>
+	<p>
+		Every program should start with a title block listing at least the name of the file, the author, and the date.  Often, programmers use extra asterisks within the title block to separate it from the code more clearly.  Additional information might be included, such as a version number, a functional description, and modifications.
+	</p>
+	<p>
+		Since comments do not affect the compiled program, there are no strict rules to follow, but the following guidelines will keep your code neat and readable.
+	</p>
+	<p>
+		Use comments for major program sections as above.  This makes it easy to find the right place in your program when you need to make a change or fix an error.
+	</p>
+	<p>
+		Keep comments short and to the point.  You shouldn't have more comments than code.
+	</p>
+	<pre>
+		Over commenting
+<strong>// Get guess from user so it can be compared</strong>
+
+<strong>/* The next line tells the user that the
+program has 2 favorite numbers. */</strong>
+System.out.println("I have two favorite numbers.");
+<strong>/* Ask the user to enter a number so that
+it can be compared to the program's favorite
+numbers */</strong>
+System.out.println("Try to guess one.");
+<strong>/* Read the user input from the keyboard
+using the Scanner variable. */</strong>
+guess = keyboard.nextInt();</pre>
+	<p>
+		Don't comment self documenting code.  Comments like this are redundant, and clutter the code.
+	</p>
+	<pre>
+<strong>// This block runs if the guess is equal to 7
+// or the guess is equal to 15.</strong>
+if(guess == 7 || guess == 15)
+{
+	System.out.println("That is one of my favorites.");
+}</pre>
+	<p>
+		Some programmers like to mark the beginning and end of if blocks and similar structures with comments.
+	</p>
+	<pre>
+if(guess == 7 || guess == 15)
+<strong>{// begin if</strong>
+	System.out.println("That is one of my favorites.");
+<strong>}// end if</strong></pre>
+	<p>
+		This is unnecessary for such a small code block, but when they become larger and many blocks are nested inside each other, the comments make the code clearer.  This is especially true when the block is large enough that it does not fit on one page or one screen.
+	</p>
+	<h2 id="CodeCramming">
+		Code Cramming
+	</h2>
+	<p>
+		There are times when you can perform multiple functions in one line of code.  Consider the following two examples.
+	</p>
+	<h3>
+		Example 1 – Too thin
+	</h3>
+	<pre>
+public class Exams
+{
+	public static void main(String[] args)
+	{
+		Scanner keyboard = new Scanner(System.in);
+		double exam1;
+		exam1 = 0.0;
+		double exam2;
+		exam2 = 0.0;
+		double exam3;
+		exam3 = 0.0;
+		double sum;
+		sum = 0.0;
+		double average;
+		average = 0.0;
+		double scaled;
+		scaled = 0.0;
+		double finalScore;
+		finalScore = 0.0;
+
+		System.out.print("Enter a grade for Exam 1: ");
+		exam1 = keyboard.nextDouble();
+		System.out.print("Enter a grade for Exam 2: ");
+		exam2 = keyboard.nextDouble();
+		System.out.print("Enter a grade for Exam 3: ");
+		exam3 = keyboard.nextDouble();
+
+		sum = exam1 + exam2 + exam3;
+		average = sum / 3;
+		scaled = average + 5;
+		finalScore = scaled / 10;
+
+		if(finalScore >= 6)
+		{
+			System.out.println("You Passed");
+		}
+	}
+}</pre>
+	<h3>
+		Example 2 – Too thick
+	</h3>
+	<pre>
+public class Exams
+{
+	public static void main(String[] args)
+	{
+		Scanner keyboard = new Scanner(System.in);
+
+		System.out.print("Enter a grade for Exam 1: ");
+		double exam = keyboard.nextDouble();
+		System.out.print("Enter a grade for Exam 2: ");
+		exam = exam + keyboard.nextDouble();
+		System.out.print("Enter a grade for Exam 3: ");
+		exam = exam + keyboard.nextDouble();
+
+		if(((exam / 3) + 5) / 10 >= 6)
+		{
+			System.out.println("You Passed");
+		}
+	}
+}</pre>
+	<p>
+		The two programs function identically, yet the second example looks much shorter.  In the second example, the calculations are all done on one line, rather than four, and inside the if statement.  Fewer variables are used.  Variables are created when needed rather than at the top so they can be initialized to a meaningful value.  In the first example, the variables are created on one line, initialized to zero on another line, and set to a useful value on yet another line.
+	</p>
+	<p>
+		It's usually a good idea to create all of the variables at the top of the program.  That makes it easier to find out what variables the program has and what they are called.
+	</p>
+	<p>
+		It is reasonable to perform multiple mathematical operations on one line as long as the code is clear. 
+	</p>
+	<p>
+		The first example is stretched out too thinly.  The second example has been compressed too much.  The example below falls between, and is more readable than either of the other two.  There is no need to create three separate variables for the exam scores, but it is easier to follow the code if the variables have unique names.  This means we are using a little more memory to store variables then necessary, but our code is easier to write and maintain.  Sometimes it is worth trading some efficiency for clarity, particularly when program performance isn't an issue.
+	</p>
+	<h3>
+		Example 3 – Just right
+	</h3>
+	<pre>
+public class Test
+{
+	public static void main(String[] args)
+	{
+		Scanner keyboard = new Scanner(System.in);
+		double exam1 = 0.0;
+		double exam2 = 0.0;
+		double exam3 = 0.0;
+		double finalScore = 0.0;
+
+		System.out.print("Enter a grade for Exam 1: ");
+		exam1 = keyboard.nextDouble();
+		System.out.print("Enter a grade for Exam 2: ");
+		exam2 = keyboard.nextDouble();
+		System.out.print("Enter a grade for Exam 3: ");
+		exam3 = keyboard.nextDouble();
+
+		finalScore = (((exam1 + exam2 + exam3) / 3) + 5) / 10;
+
+		if(finalScore >= 6)
+		{
+			System.out.println("You Passed");
+		}
+	}
+}</pre>
+
+  <div class = "center">
+    <a href="/chapter/4_1">Section 1 |</a></href>
+    Section 2 |
+    <a href="/chapter/4_3">Section 3 |</a></href>
+    <a href="/chapter/4_4">Section 4 |</a></href>
+    <a href="/chapter/4_5">Section 5 |</a></href>
+  </div>

@@ -1,0 +1,19 @@
+mlab.com
+usr: berkss1
+psw: sam26112519
+
+create new/Amazon
+click on your database, then click user tab, then 'Add database user'.
+copy string as below then chaneg user and password in your application
+
+mongodb://<dbuser>:<dbpassword>@ds231568.mlab.com:31568/java-uat
+db name: java-uat
+user: root
+psw: pas123
+
+mongodb://<dbuser>:<dbpassword>@ds231568.mlab.com:31568/java-prod
+db name: java-prod
+user: root
+psw: pas123
+
+

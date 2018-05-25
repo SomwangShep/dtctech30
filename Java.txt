@@ -1,0 +1,35 @@
+install java  
+============
+    sudo apt-get update
+    sudo apt-get install default-jdk
+    java -version
+    
+push to git hub
+===============
+    - git status
+    - git add --all
+    - git commit -m "Comment"
+    - git push origin master
+    
+upgrade to java 8
+=================
+sudo apt-get purge openjdk*
+sudo add-apt-repository ppa:openjdk-r/ppa
+sudo apt-get update
+sudo apt-get install openjdk-8-jdk
+
+install ant
+============
+sudo apt-get update
+sudo apt-get install ant
+
+----------------------- Ant ------------------------
+A default build.xml file is located in the "ant" folder of the course public repository:
+
+How to use:
+
+- Put all of your java source files in a folder called src.
+- Copy the default build.xml file into the root folder that contains src.
+- Edit the value for the <property name="mainClass" value="Main"/>  so that it matches the name of your "main" java class.
+- when you run, you need to run from the main root where your build.xml file locate
+- Type ant to compile and run your program.

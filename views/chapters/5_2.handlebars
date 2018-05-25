@@ -1,0 +1,101 @@
+  <h1> While Loops - Section 2</h1>
+  <div class = "center">
+  	<a href="/chapter/5_1">Section 1 |</a></href>
+    Section 2 |
+  </div>
+  
+	<h2 id="InputValidation">
+		Input Validation
+	</h2>
+	<p>
+		A common use of a <code>while</code> loop is to validate user input.  Suppose we ask the user to enter a positive integer.  If the user enters a negative number, the program should complain and ask the user to enter a positive number again.  This way, we make sure we have good data before we start using it.
+	</p>
+	<p>
+		The following code requires that the user enter a positive integer before moving on.
+	</p>
+	<pre>
+int x = -1;
+Scanner in = new Scanner(System.in);
+
+<strong>while(x < 0)</strong>
+{
+	System.out.println("Please enter a positive integer.");
+	x = in.nextInt();
+}
+
+System.out.println("Yes " + x + " is positive.");</pre>
+	<p>
+		Since x is initialized to -1 (less than 0), the <code>while</code> loop will execute the first time it is reached.  After each run through the loop, the condition is checked again.  If the user has entered a positive number, the condition x < 0 will be <code>false</code>, and the loop will not run again.  The program continues.	
+	</p>
+	<p>
+		As a second example of user input validation, suppose we have a game program that asks the user to play again, and expects either "y" or "n" as a response.  We would like the program to check this input, and require the user to enter one of the two possible choices.
+	</p>
+	<pre>
+System.out.println("Play again? (y or n)");
+playAgain = in.nextLine();
+
+while( <strong>!(playAgain.equals("y") || playAgain.equals("n")) )</strong>
+{
+	System.out.println("Please enter y or n.");
+	playAgain = in.nextLine();
+}</pre>
+	<p>
+		The <code>while</code> loop will repeat as long as the condition is <code>true</code>, and exit when the condition is <code>false</code>.  We need a condition that will be true for bad inputs, and false for good inputs (y or n).  Consider the condition below.
+	</p>
+	<pre>
+playAgain.equals("y") || playAgain.equals("n")</pre>
+	<p>
+		This is <code>true</code> if the user entered y or n (a good input) and <code>false</code> otherwise, which is exactly the opposite of what we want.  If we use the NOT operator on the entire condition, it will do what we wish.
+	</p>
+	<pre>
+!(playAgain.equals("y") || playAgain.equals("n"))</pre>
+	
+	<h2 id="SolvingLoopProblems">
+		Solving Loop Problems
+	</h2>
+	<p>
+		What is the output of this block of code?
+	</p>
+	<pre>
+int i = 0;
+int x = 2;
+
+while (i <= 4)
+{
+    i++;
+    x = x * 2;
+}
+
+System.out.println("i = " + i);
+System.out.println("x = " + x);</pre>
+	<p>
+		For problems involving loops, it is often useful to make a table showing the values of the variable after each pass through the loop.  For the problem above, we want to repeat the loop until i is no longer less than or equal to 4.
+	</p>
+	<table class="customers">
+		<tr><th>When</th><th>i</th><th>x</th></tr>
+		<tr><td>Initially</td><td>0</td><td>2</td></tr>
+		<tr><td>After first pass</td><td>1</td><td>4</td></tr>
+		<tr><td>After second pass</td><td>2</td><td>8</td></tr>
+		<tr><td>After third pass</td><td>3</td><td>16</td></tr>
+		<tr><td>After fourth pass</td><td>4</td><td>32</td></tr>
+		<tr><td>After fifth pass</td><td>5</td><td>64</td></tr>
+	</table>
+	<p>
+		After the loop completes for the fifth time, i is 5, which is not less than or equal to 4.  The loop ends, and the answer is:
+	</p>
+	<pre style="color:blue;">
+i = 5
+x = 64</pre>
+	
+	<h2 id="FlowDiagrams">
+		Flow Diagrams
+	</h2>
+	<p>
+		A <code>while</code> loop can be depicted by a flow diagram in much the same way as an <code>if/else</code> structure.  A diamond shape is used to represent the <code>while</code> condition.  The diamond has a <code>true</code> branch and a <code>false</code> branch.  The <code>true</code> branch leads to the code block and loops back to the diamond.  The false branch exits the loop.
+	</p>
+	<p style="text-align: center;"><img src="/img/c5_p7.jpg"%></p>
+	
+  <div class = "center">
+  	<a href="/chapter/5_1">Section 1 |</a></href>
+    Section 2 |
+  </div>	

@@ -1,0 +1,167 @@
+  <h1> For Loops - Section 1</h1>
+  <div class = "center">
+    Section 1 |
+    <a href="/chapter/6_2">Section 2 |</a></href>
+  </div> 
+  
+  <h2>For Loops</h2>
+  <p>
+  	A <code>for</code> loop is a special form of a while loop.  We often need a repetition structure that counts as the loop below does.
+  </p>
+  <pre>
+int count = 1;
+while(count < 6)
+{
+	// Useful code
+
+	count = count + 1;
+}</pre>
+  <p>
+  	A counting variable (called <code>count</code> in this example), is initialized to some value.  The code inside repeats as long as the count is less than some value.  At the end of each loop the count is incremented so that it counts from the initial value up to some maximum.  In the example above, the <code>count</code> variable counts from 1 to 5.
+  </p>
+  <p>
+  	The <code>for</code> structure allows us to specify the loop properties in one place.  The following code is equivalent to the code above.
+  </p>
+  <pre>
+int count;
+for(count = 1; count < 6; count = count + 1)
+{
+	// Useful code	
+}</pre>
+  <p>
+  	A variable must be created to be used as an count variable.  The same variable can be used for multiple <code>for</code> loops since it will be initialized at the start of each.  It is common to use the letter i for a counting variable.  
+  </p>
+  <p>
+  	Three things go in the parentheses of a <code>for</code> loop and they are separated by semicolons.
+  </p>
+  <p style="text-align: center;"><img src="/img/c6_p1.jpg"%></p>
+  <p>
+  	When a <code>for</code> loop is encountered in program execution, the count variable is set to the given initialization value.  This only happens before the first pass through the loop.    
+  </p>
+  <p>
+  	Next, the condition is checked.  If the condition is <code>true</code>, the code inside the loop runs.  
+  </p>
+  <p>
+  	When the code in the block has executed, the loop operation is performed changing the counting variable.
+  </p>
+  <p>
+  	The condition is checked again, and if it is <code>true</code>, the loop runs again.  When the condition becomes <code>false</code>, the loop does not run again, and the program continues.  If the condition never becomes <code>false</code>, an infinite loop results.
+  </p>
+  <p>
+  	The program below calculates and prints the squares of the numbers from 0 through 5.
+  </p>
+  <pre>
+public class Squares
+{
+	public static void main(String[] args)
+	{
+		int i;
+		int square;
+
+		<strong>for(i = 0; i < 6; i = i + 1)</strong>
+		{
+			square = i * i;
+			System.out.println(i + " * " + i + " = " + square);
+		}
+	}
+}</pre>
+	<p style="text-align: center;"><img src="/img/c6_p2.jpg"%></p>
+	
+	<h2 id="Variations">
+		Variations
+	</h2>
+	<p>
+		The counting variable can be created inside the <code>for</code> statement, but then the variable only exists inside the loop.
+	</p>
+	<pre>
+for(<strong>int i = 0;</strong> i < 5; i = i + 1)
+{
+	System.out.println(i);
+}
+System.out.println(<strong>i</strong>);  <span style="color:red;">// This won't compile</span></pre>
+	<p>
+		To count to any particular number, the condition can use either < or <= depending on the constant chosen.
+	</p>
+	<pre style="color:blue;">
+for(i = 1; i < 6; i = i + 1)
+
+for(i = 1; i <= 5; i = i + 1)</pre>
+	<p>
+		Both of the above will run five times.  Which to use is a matter of preference.
+	</p>
+	<p>
+		Any condition, however complex, may be used as long as it can be evaluated as <code>true</code> or <code>false</code>.
+	</p>
+	<pre style="color:blue;">
+for(i = 1; <strong>i < 2 && x != 7 || s.equals("Beans")</strong>; i = i + 1)</pre>
+	<p>
+		The loop operation can be any assignment statement that provides the desired result.
+	</p>
+	<pre style="color:blue;">
+for(i = 1; i < 50; <strong>i = i * 3 + 2</strong>)</pre>
+	<p>
+		The loop operation can be any assignment statement, but it is most common to simply increment the index.  It is also common to use the increment operator (++) for this task.
+	</p>
+	<pre style="color:blue;">
+for(i = 1; i < 6; <strong>i++</strong>)</pre>
+	<p>
+		As with the <code>while</code> loop, the <code>break</code> statement causes the current <code>for</code> loop to exit immediately.  The program continues after the loop.
+	</p>
+	<pre>
+for(i = 0; i < 25; i++)
+{
+	input = in.nextInt();
+	total = total + input;
+
+	if(input == 0)
+	{
+		<strong>break;</strong>
+	}
+}</pre>
+	<p>
+		<code>For</code> loops can be nested like <code>if</code> statements and <code>while</code> loops.  Separate counting variables must be used for each loop.  The inside loop runs many times for each run of the outside loop.
+	</p>
+	<pre>
+for(i = 0; i < 25; i++)
+{
+	for(j = 0; j < 50; j++)
+	{
+		System.out.println(i + " , " + j);
+	}
+}</pre>
+	
+	<h2 id="CommonErrors">
+		Common Errors
+	</h2>
+	<p>
+		Like <code>while</code> and <code>if</code> statements, <code>for</code> statements do not end with a semicolon.  Doing so will cause the program to do nothing until the loop ends.
+	</p>
+	<p>
+		The loop must have a condition that will allow the loop to run some number of times and then end.  If the condition is always <code>true</code>, the loop will never end.
+	</p>
+	<pre>
+for(int i = 0; <strong>i >= 0</strong>; i++)  <span style="color:red;">// Don't do this</span>
+{
+	System.out.println(i);
+}</pre>
+	<p>
+		If the condition is never <code>true</code>, the loop will not run at all.
+	</p>
+	<pre>
+for(int i = 0; <strong>i == 5</strong>; i++)  <span style="color:red;">// Don't do this</span>
+{
+	System.out.println(i);
+}</pre>
+	<p>
+		As always, an assignment statement can not be used as a condition.
+	</p>
+	<pre>
+for(int i = 0; <strong>i = 5</strong>; i++)  <span style="color:red;">// Don't do this</span>
+{
+	System.out.println(i);
+}</pre>
+
+  <div class = "center">
+    Section 1 |
+    <a href="/chapter/6_2">Section 2 |</a></href>
+  </div> 

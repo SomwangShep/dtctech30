@@ -1,0 +1,384 @@
+  <h1> Methods - Section 2</h1>
+  <div class = "center">
+    <a href="/chapter/8_1">Section 1 |</a></href>
+    Section 2 |
+  </div>
+  
+<h2 id="StaticMethods">
+	Static Methods
+</h2>
+<p>
+	A <code>static</code> method is called on a <code>class</code> rather than on an object. Other methods must be called on objects because the methods use information contained in the object.  Creation of the object sets things up so methods can be called.  For example, the nextLine() method of the Scanner must be called on an object of the Scanner class, so the program knows whether to read from the keyboard, or a file.
+</p>
+<pre>
+String line = nextLine();				<span style="color:red;">// Don't do this</span>
+
+String line = keyboard.nextLine();	<span style="color:red;">// Do this</span></pre>
+<p>
+	However, there are times when a method does not need any information aside from its input arguments.  Suppose we want to take the square root of a number.  It makes sense to have a method that takes in a number and <code>returns</code> the solution without creating an object first.  
+</p>
+<p>
+	The Math class (java.lang.Math) contains many <code>static</code> methods that perform mathematical operations, such as sqrt().  These methods do not require the creation of an object.  They are called on the class itself.  That means the name of the class precedes the period before the method name. 
+</p>
+<pre>
+double root = <strong>Math.sqrt(25)</strong>;</pre>
+<p>
+	The Math.sqrt() method requires one argument of type double, and <code>returns</code> a double.  The method <code>returns</code> the square root of the argument.  Below is a method description for the Math.sqrt() method.
+</p>
+<pre>
+static double Math.sqrt(double n)</pre>
+<p>
+	Static methods are usually utility methods that perform isolated number crunching and data manipulation.  Below is a listing of some of the <code>static</code> methods in the Math class.  Note that many of the methods are overridden.  For example, there are two versions of the abs() method; one that works with <code>ints</code>, and one that works with <code>doubles</code>.
+</p>
+
+<h2 id="Math">
+	Math (java.lang.Math)
+</h2>
+
+<pre>static int Math.abs(int a)</pre>
+<p>returns the absolute value of the argument a</p>
+
+<pre>static double Math.abs(double a)</pre>
+<p>returns the absolute value of the argument a</p>
+
+<pre>static double Math.cos(double a)</pre>
+<p>returns the cosine of the angle a</p>
+
+<pre>static int Math.max(int a, int b)</pre>
+<p>returns the greater of the two arguments</p>
+
+<pre>static double Math.max(double a, double b)</pre>
+<p>returns the greater of the two arguments</p>
+
+<pre>static int Math.min(int a, int b)</pre>
+<p>returns the smaller of the two arguments</p>
+
+<pre>static double Math.min(double a, double b)</pre>
+<p>returns the smaller of the two arguments</p>
+
+<pre>static double Math.pow(double a, double b)</pre>
+<p>returns the value of a raised to the power of b</p>
+
+<pre>static double Math.rint(double a)</pre>
+<p>returns the argument a rounded to the nearest integer, but as a double</p>
+
+<pre>static double Math.sin(double a)</pre>
+<p>returns the sine of the angle a</p>
+
+<pre>static double Math.sqrt(double a)</pre>
+<p>returns the positive square root of the argument a</p>
+
+<pre>static double Math.tan(double a)</pre>
+<p>returns the tangent of the angle a</p>
+
+<h3 id="Arrays">
+	Arrays (java.util.Arrays)
+</h3>
+<p>
+	The Arrays <code>class</code> contains many <code>static</code> methods that manipulate arrays.  The methods are overloaded so that they work with many data types.  Some of the methods are listed below.
+</p>
+<pre>
+static int Arrays.binarySearch(char[] a, char key)
+static int Arrays.binarySearch(double[] a, double key)
+static int Arrays.binarySearch(int[] a, int key)
+static int Arrays.binarySearch(String[] a, String key)
+
+static boolean Arrays.equals(boolean[] a1, boolean[] a2)
+static boolean Arrays.equals(char[] a1, char[] a2)
+static boolean Arrays.equals(double[] a1, double[] a2)
+static boolean Arrays.equals(int[] a1, int[] a2)
+static boolean Arrays.equals(String[] a1, String[] a2)
+
+static void Arrays.fill(boolean[] a, boolean value)
+static void Arrays.fill(char[] a, char value)
+static void Arrays.fill(double[] a, double value)
+static void Arrays.fill(int[] a, int value)
+static void Arrays.fill(String[] a, String value)
+
+static void Arrays.fill(boolean[] a, int from, int to, boolean value)
+static void Arrays.fill(char[] a, int from, int to, char value)
+static void Arrays.fill(double[] a, int from, int to, double value)
+static void Arrays.fill(int[] a, int from, int to, int value)
+static void Arrays.fill(String[] a, int from, int to, String value)
+
+static void Arrays.sort(char[] a)
+static void Arrays.sort(double[] a)
+static void Arrays.sort(int[] a)
+static void Arrays.sort(String[] a)</pre>
+
+<br/>
+<h4>int Arrays.binarySearch(int[] a, int key)</h4>
+<p>
+	The binarySearch() method returns the index of the argument key in the array a.  The array must be sorted before searching.  If the array has multiple matching values, any of their indices might be returned.  That is, this search algorithm is not guaranteed to find any particular element that matches.  
+<br/>If no matching element can be found a negative number is returned.  The negative return value indicates the index where the key would be if it were in the array as –(position + 1).
+</p>
+
+<br/>
+<h4>boolean Arrays.equals(int[] a1, int[] a2)</h4>
+<p>
+	The equals() method returns true if both arrays have the same number of elements, and they have the same values, in the same order.  That is, if all of the elements in <code>a1</code> are equal to the elements in <code>a2</code>.
+</p>
+
+<br/>
+<h4>void Arrays.fill(int[] a, int value)</h4>
+<p>
+	The fill() method sets every element in the array to the value <code>value</code>.  The method does not return a new array.  It fills the existing array.
+</p>
+
+<br/>
+<h4>void Arrays.fill(int[] a, int from, int to,int value)</h4>
+<p>
+	These versions of the fill() method fill only part of the array.  All of the elements from the index <code>from</code>, to but not including the index <code>to</code> are replaced by <code>value</code>.
+</p>
+
+<br/>
+<h4>void Arrays.sort(int[] a)</h4>
+<p>
+	The sort() method sorts an array from smallest to largest.  All elements in the array are sorted, so the array should not have extra useless elements.  The method does not return a sorted array, it sorts the array <code>a</code>.
+</p>
+
+<br/>
+<p>
+	The following example program uses some of the static Arrays methods.
+</p>
+<p>
+	The program creates a <code>new int</code> array with some values.
+</p>
+<pre>
+int[] number = {7, 2, 9, 4, 1};	
+</pre>
+<br/>
+<p>
+	Then it sorts the array.
+</p>
+<pre>Arrays.sort(number);</pre>
+<br/>
+<p>Then it searches for the number 7. </p>
+<pre>int index = Arrays.binarySearch(number, 7)</pre>
+<br/>
+<p>The returned index is used in the assignment statement so that the element containing 7 with be set to 5.</p>
+<pre>number[index] = 5;</pre>
+<br/>
+<p>Finally, the array is filled with 3's.</p>
+<pre>Arrays.fill(number, 3);</pre>
+<pre>
+import java.util.Arrays;
+
+public class ArrayMethods
+{
+	public static void main(String[] args)
+	{
+		<strong>int[] number = {7, 2, 9, 4, 1};</strong>
+		System.out.println("The original array.");
+		for(int i = 0; i < number.length; i++)
+		{
+			System.out.print(number[i] + " ");
+		}
+
+		<strong>Arrays.sort(number);</strong>
+		System.out.println("\nThe sorted array.");
+		for(int i = 0; i < number.length; i++)
+		{
+			System.out.print(number[i] + " ");
+		}
+
+		int index = <strong>Arrays.binarySearch(number, 7);</strong>
+		<strong>number[index] = 5;</strong>
+		System.out.println("\nChange the 7 to a 5.");
+		for(int i = 0; i < number.length; i++)
+		{
+			System.out.print(number[i] + " ");
+		}
+
+		<strong>Arrays.fill(number, 3);</strong>
+		System.out.println("\nFill it with 3's.");
+		for(int i = 0; i < number.length; i++)
+		{
+			System.out.print(number[i] + " ");
+		}
+	}
+}</pre>
+<p style="text-align: center;"><img src="/img/c8_p13.jpg"%></p>
+
+<h2 id="Integer">
+	Integer (java.lang.Integer)
+</h2>
+<p>
+	The Integer <code>class</code> is an example of what is called a wrapper <code>class</code>.  Although an integer is normally stored as a primitive <code>int</code> type, it can be stored as an object of the Integer <code>class</code>.  The Integer <code>class</code> has methods that can be called on an Integer object.  The integer class also contains some useful <code>static</code> methods.  In particular, the static parseInt() method takes a String argument, and returns an <code>int</code> containing the value represented by the String.
+</p>
+<pre>static int Integer.parseInt(String s)</pre>
+<p>An example using the static Integer.parseInt() method is shown below.</p>
+<pre>
+String s = “23”;
+int number;
+
+number = Integer.parseInt(s);</pre>
+
+<h2 id="Double">
+	Double (java.lang.Double)
+</h2>
+<p>
+	The Double <code>class</code> is a wrapper <code>class</code> for the double primitive type.  Like the Integer <code>class</code>, it contains both normal and <code>static</code> methods, including a <code>static</code> method that returns a double given the String representation of the double.
+</p>
+<pre>static double Double.parseDouble(String s)</pre>
+<p>An example using the <code>static</code> Double.parseDouble() method is shown below.</p>
+<pre>
+String s = “3.14”;
+double number;
+
+number = Double.parseDouble(s);</pre>
+
+<h2 id="Character">
+	Character (java.lang.Character)
+</h2>
+<p>
+	The Character <code>class</code> is a wrapper <code>class</code> for the char primitive type.  It contains both normal and <code>static</code> methods.
+</p>
+<pre>
+static boolean isDigit(char c)
+static boolean isLetter(char c)
+static boolean isLetterOrDigit(char c)
+static boolean isLowerCase(char c)
+static boolean isUpperCase(char c)
+static boolean isWhitespace(char c)</pre>
+
+<h2 id="JOptionPane">
+	JOptionPane (javax.swing.JOptionPane)
+</h2>
+<p>
+	The JOptionPane <code>class</code> contains some static methods that can be used to create simple dialog boxes.  Two are shown below.
+</p>
+<pre>
+JOptionPane.ShowInputDialog(Component parent, Object message)
+JOptionPane.ShowMessageDialog(Component parent, Object message)</pre>
+<p>
+	The first argument can be set to <code>null</code>.  The second argument is the String you want to appear in the dialog box.  The message dialog simply displays a message.  The input dialog has a field for users to type in.  
+</p>
+<p>
+	When the showInputDialog() method is called, the program blocks until the dialog box is closed.  Then the text in the field is returned as a String.  If another data type is desired, the <code>return</code> value must be parsed.
+</p>
+<p>
+	The example below gets input from the user with input dialog boxes.  The returned values are parsed into <code>ints</code> using the Integer.parseInt() method.  The two values are added, and displayed using a message dialog box.
+</p>
+<pre>
+import javax.swing.JOptionPane;
+
+public class DialogBox
+{
+	public static void main(String[] args)
+	{
+		String input = "";
+		int a = 0;
+		int b = 0;
+		int sum = 0;
+		input = JOptionPane.showInputDialog(null, "Enter value A:");
+		a = Integer.parseInt(input);
+		input = JOptionPane.showInputDialog(null, "Enter value B:");
+		b = Integer.parseInt(input);
+
+		sum = a + b;
+		JOptionPane.showMessageDialog(null, "The sum is " + sum);
+	}
+}</pre>
+<p style="text-align: center;"><img src="/img/c8_p15.jpg"%></p>
+
+<h2 id="String">
+	String (java.lang.String)
+</h2>
+<p>
+	The String class is used to create and manipulate String objects, but it also contains static methods.   The format() method creates and returns a String object with data embedded in a specified way.   The formatting controls the spacing and placement of the values.  For example, a double can be formatted so that only two decimal places are showing.
+</p>
+<p>
+	The format() method can have any number of arguments.  The first argument is always the format string.  The other arguments are the values that will be formatted.
+</p>
+<pre>static String format(String formatString, Object … args)</pre>
+<p>
+	The format string is a String that contains format specfiers.  Each format specifier starts with a percent sign (%) and ends with a letter as shown below.
+</p>
+<pre>
+%s		String
+%d		int
+%f		double
+%c		char</pre>
+<p>
+	For each format specifier, data must be placed as an argument after the format string.  The arguments must be in the same order and the proper types.
+</p>
+<pre>String s = String.format("%d%f", 3, 1.49);</pre>
+<p>
+	The String s now holds the value "31.490000".  The values used as arguments have been converted to Strings and joined.
+</p>
+<p>
+	The format string can contain other characters.  The argument values are inserted into the text. 
+</p>
+<pre>String s = String.format("Item %d name %s price %f", 3, "gum", 1.49);</pre>
+<p>
+	A number within the format specifier indicates the minimum number of spaces the value will take up in the String.  If the value does not fill all the spaces, extra spaces are added to the left (the value is right aligned in the field).  
+</p>
+<p>
+	If the number is negative, the extra spaces are added on the right (the value is left aligned in the field). 
+</p>
+<pre>String s = String.format("%5d%-5d%5d", 1, 2, 3);</pre>
+<p>
+	The line above will create a new string and convert and embed the three values.  Each value is placed in a field of five characters.  The first and third values are right aligned.  The second value is left aligned.
+</p>
+<p style="text-align: center;"><img src="/img/c8_p17.jpg"%></p>
+<p>
+	For floating point values (doubles), a number may be placed after the decimal point (.) indicating the number of decimal places to show.  
+</p>
+<pre>String s = String.format("%5.2f", 3.14159);</pre>
+<p>
+	This creates the String " 3.14".  Note the leading space.  With two decimal places, the value requires 4 characters.  An additional space is added to make a 5 character field.  If the size of the field is too small, it is ignored.  The value takes up as many spaces as it needs.  The line below creates the String "3.14".  No spaces are added, but all four characters are retained.
+</p>
+<pre>String s = String.format("%3.2f", 3.14159);</pre>
+<p>The code below prints a table.  Formatting is used to line up the values.</p>
+<pre>
+System.out.println("Item#  Product   Price");
+System.out.println(String.format("%-7d%-8s%9.2f", 1, "gum", 1.49));
+System.out.println(String.format("%-7d%-8s%9.2f", 2, "banana", 0.79));
+System.out.println(String.format("%-7d%-8s%9.2f", 3, "milk", 4.29));
+System.out.println(String.format("%-7d%-8s%9.2f", 4, "forklift", 9231.99));
+System.out.println(String.format("%-7d%-8s%9.2f", 5, "jetpack", 1252.26));</pre>
+<p style="text-align: center;"><img src="/img/c8_p17_02.jpg"%></p>
+
+<h2 id="Thread">
+	Thread (java.lang.Thread)
+</h2>
+<p>
+	The Thread class has a method called sleep() that makes the program pause for a certain amount of time.
+</p>
+<p><strong>static void Thread.sleep(int milliseconds)</strong></p>
+<p>
+	The only argument is the number of milliseconds for which the thread should sleep.  A value of 1000 milliseconds will cause a 1 second pause.
+</p>
+<p>
+	The example below prints the String "Howdy!", one character at a time, with half-second pauses between characters.
+</p>
+<pre>
+public class StepPrinter
+{
+	public static void main(String[] args) throws Exception
+	{
+		String message = "Howdy!";
+		for(int i = 0; i < message.length(); i++)
+		{
+			System.out.print(message.charAt(i));
+			Thread.sleep(500);
+		}
+	}
+}</pre>
+<p>
+	There are some methods that might throw an Exception, and they know that they might throw an Exception.  This sort of Exception is called a checked Exception.  The sleep() method is such a method.  Since it might throw an Exception, our program has to be prepared to handle that possibility.  One way to do this is to declare that the main() method throws an Exception.
+</p>
+<pre>public static void main(String[] args) <strong>throws Exception</strong></pre>
+<p>
+	This addition says that if main() calls a method, and it throws an Exception, main() will throw the Exception and print an error message on the console.  If the main() method does not admit that it calls a method that might throw an Exception, the compiler will complain.
+</p>
+<pre>
+StepPrinter.java:9: unreported exception java.lang.InterruptedException; must be caught or declared to be thrown
+			Thread.sleep(500);
+			            ^</pre>
+
+  <div class = "center">
+    <a href="/chapter/8_1">Section 1 |</a></href>
+    Section 2 |
+  </div>

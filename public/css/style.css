@@ -1,0 +1,89 @@
+h1 {text-align: center;}
+
+.center {
+  text-align: center;
+}
+
+pre
+{
+	padding: 10px;
+	font-family: monospace;
+	border: 1px solid #aaaaaa;
+	/*background-color: #dddddd;*/
+	background-color: #f5f0f0;
+	color: #000000;
+	white-space: pre;
+
+  -moz-tab-size: 2; /* Code for Firefox */
+  -o-tab-size: 2; /* Code for Opera 10.6-12.1 */
+  tab-size: 2;  
+  font-size: 1.2em !important;
+}
+
+/*======================table===============================*/
+table {
+  margin-left: auto;
+  margin-right: auto;
+  font-family: monospace;
+}
+table, td, th { border: 1px solid gray }
+table th { text-align: center; }
+
+.customers,.customers2 {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+}
+.customers2{
+  width: 50%;
+}
+.customers2{
+  width: 100%;
+}
+
+.customers td, .customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+.customers2 td, .customers2 th {
+  border: 1px solid #ddd;
+  padding: 3px;
+}
+
+.customers tr:nth-child(even){background-color: #f2f2f2;}
+
+.customers tr:hover {background-color: #ddd;}
+
+.customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #4CAF50;
+  color: white;
+}
+.customers caption{
+  text-align: center;
+  color:blue;
+  background-color: #ddd;
+}
+/*======================footer===============================*/
+footer {
+	/*//margin-top: 45px;*/
+	/*//padding-top: 5px;*/
+	border-top: 1px solid #eaeaea;
+	color: #777;
+}
+footer small {
+	float: left
+}
+footer ul {
+	float: right;
+	list-style: none;
+}
+/*==================Navbar and index===============================*/
+.panel-group a, .nav-link {
+  color: black !important;
+  /*font-size: 0.7em;*/
+  font-size: 1rem;
+  /*background-color: #dddddd;*/
+}
+

@@ -1,0 +1,86 @@
+  <h1> Arrays - Section 3</h1>
+  <div class = "center">
+    <a href="/chapter/7_1">Section 1 |</a></href>
+    <a href="/chapter/7_2">Section 2 |</a></href>
+    Section 3 |
+  </div>
+  
+<h2 id="StoringData">
+	Storing Data
+</h2>
+<p>
+	When we don't know how many times a loop will repeat before the loop starts, a <code>while</code> loop is a better choice than a <code>for</code> loop.  Suppose we want a program to store an unknown number of values entered by a user.  To hold the values, we create an array that is larger than we will need.  We also need a variable to count the number of values entered.
+</p>
+<pre>
+int[] value = new int[100];
+Scanner input = new Scanner(System.in);
+
+int userInput = -1;
+int count = 0;
+
+while(userInput != 0)
+{
+    System.out.println("Enter a value (0 to quit):");
+    userInput = input.nextInt();
+    if(userInput != 0)
+    {
+        value[count] = userInput;
+        count++;
+    }
+}</pre>
+<p style="text-align: center;"><img src="/img/c7_p10.jpg"%></p>
+
+<h2 id="Sorting">
+	Sorting
+</h2>
+<p>
+	There are many sorting algorithms, each with different advantages and disadvantages.  The algorithm described here is normally called a selection sort.  
+</p>
+<p>
+	The idea is to sort the data by putting the largest value in the first array element, the second largest value in the next element and so forth.  Using a <code>for</code> loop, we can sort one value for each iteration of the loop.  The first few iterations are explained in words below.
+</p>
+<pre>
+Go through all array elements to find the maximum.
+Swap maximum with element 0.
+
+Go through all array elements except 0 to find the maximum.
+Swap maximum with element 1.
+
+Go through all array elements except 0 and 1 to find the maximum.
+Swap maximum with element 2.</pre>
+<p>
+	The illustration below shows a 4 element array being sorted in 3 iterations of a loop.  The last element is always automatically sorted when all the other elements are in place.
+</p>
+<p style="text-align: center;"><img src="/img/c7_p14.jpg"%></p>
+<p>
+	Within each iteration of the <code>for</code> loop, we need to find a maximum value.  This means we need another <code>for</code> loop nested inside the first.  The inner loop finds the maximum value from those remaining to be sorted.  The outer loop puts that maximum value where it should go, and runs the inner loop once for each array element (aside from the last).
+</p>
+<pre>
+for(i = 0; i < data.length-1; i++)
+{
+	// Reset max and index of max
+	max = data[i];
+	index = i;
+
+	// Search for max
+	for(j = i+1; j < data.length; j++)
+	{
+		if(data[j] > max)
+		{
+  			max = data[j];
+  			index = j;
+		}
+	}
+
+	// Swap max with element i
+	temp = data[i];
+	data[i] = max;
+	data[index] = temp;
+}</pre>
+<p style="text-align: center;"><img src="/img/c7_p15.jpg"%></p>  	
+
+  <div class = "center">
+    <a href="/chapter/7_1">Section 1 |</a></href>
+    <a href="/chapter/7_2">Section 2 |</a></href>
+    Section 3 |
+  </div>

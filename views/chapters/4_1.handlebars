@@ -1,0 +1,138 @@
+  <h1> Best Programming Practices - Section 1</h1>
+  <div class = "center">
+    Section 1 |
+    <a href="/chapter/4_2">Section 2 |</a></href>
+    <a href="/chapter/4_3">Section 3 |</a></href>
+    <a href="/chapter/4_4">Section 4 |</a></href>
+    <a href="/chapter/4_5">Section 5 |</a></href>
+  </div>
+  
+	<h2 id="Readability">
+		Readability
+	</h2>
+	<p>
+		Readability is an important feature of every program.  It is much easier to find and correct programming errors if the program is easy to read.  The conventions covered in this section will not affect program performance, but nevertheless lead to better code.
+	</p>
+	
+	<h2 id="FormattingandIndentation">
+		Formatting and Indentation
+	</h2>
+	<p>
+		Spaces are required in the Java language in certain places.  For example, in the line
+	</p>
+	<pre>
+Scanner keyboard = new Scanner(System.in);	<strong>Correct</strong></pre>
+	<p>
+		A space is required between Scanner and keyboard so that the compiler knows they are separate words.  If the space is omitted, the compiler will see the word Scannerkeyboard, and it will not be recognized.
+	</p>
+	<pre>
+Scannerkeyboard = new Scanner(System.in); 	<strong>Incorrect</strong></pre>
+	<p>
+		On the other hand, spaces are not required around operators, because these symbols can not be used as part of a variable name.
+	</p>
+	<pre>
+x=keyboard.nextInt();				<strong>Correct</strong>
+if(x>2&&x<10)</pre>
+	<p>
+		However, these lines are hard to read.  The use of spaces around operators is recommended.
+	</p>
+	<pre>
+x = keyboard.nextInt();				<strong>Preferred</strong>
+if(x > 2 && x < 10)</pre>
+	<p>
+		Although sometimes a space is required, extra whitespace is ignored by the Java compiler.  That includes spaces, tabs, and newlines.  Adding extra whitespace characters following the guidelines below will make your programs more clear.
+	</p>
+	<ul>
+		<li>Start each program line/statement on a new line</li>
+		<li>Use blank lines between program sections</li>
+		<li>Line up brace pairs</li>
+		<li>Always use Braces for if and else blocks</li>
+		<li>Indent one tab for each brace level</li>
+		<li>Use the same indentation within any specific brace level</li>
+	</ul>
+	<p>
+		The two programs below are identical as far as the compiler is concerned.  The first program is very dense, but this will not make it run faster or use less memory.  It's just harder to read.  This gives programming errors places to hide.
+	</p>
+	<h3>
+		Example 1 – Sloppy
+	</h3>
+	<pre style="color:red">
+import java.util.Scanner;public class Favorites{
+public static void main(String[] args)
+{Scanner keyboard=new Scanner(System.in);
+int guess=0; System.out.println("I have two favorite numbers.");
+System.out.println("Try to guess one.");
+guess=keyboard.nextInt(); if(guess==7||guess==15){
+System.out.println("That is one of my favorites.");}
+else System.out.println("Not one of my favorites.");}}</pre>
+	<p>
+		The second program is identical to the first, except whitespace characters and a few braces have been added.  It is much easier to read.  Note that the braces are always on the same level as the preceding line, and the code inside the braces is indented one additional level
+	</p>
+	<h3>
+		Example 2 – Neat
+	</h3>
+	<pre>
+import java.util.Scanner;
+
+public class Favorites
+{
+	public static void main(String[] args)
+	{
+		Scanner keyboard = new Scanner(System.in);
+		int guess = 0;
+
+		System.out.println("I have two favorite numbers.");
+		System.out.println("Try to guess one.");
+
+		guess = keyboard.nextInt();
+
+		if(guess == 7 || guess == 15)
+		{
+			System.out.println("That is one of my favorites.");
+		}
+		else
+		{
+			System.out.println("Not one of my favorites.");
+		}
+	}
+}</pre>
+
+	<h2 id="VariableNames">
+		Variable Names
+	</h2>
+	<p>
+		Good variable names make code more readable.  A good variable name describes the information it holds.  Although short variable names are useful for examples and worksheets, names like those given below lead to confusion.  As programs become bigger, the number of variables increases, and it becomes more difficult to remember what a variable called "stuff", or "num" was supposed to be for.
+	</p>
+	<pre style="color:red">
+double amt = 0;		<strong>Bad Variable Names</strong>
+int ht = 0;
+double a = 0;
+int var = 0;
+String s = "";</pre>
+	<p>
+		If a variable is named properly, its function is more obvious.
+	</p>
+	<pre style="color:blue">
+double myMoney = 0; 	<strong>Good Variable Names</strong>
+int height = 0;
+double examAverage = 0;
+String firstName = "";</pre>
+	<p>
+		Well named variables lead to self documenting code, which means the code reads almost like an English sentence.
+	</p>
+	<pre>
+double myMoney = 0;
+boolean broke = false;
+...
+<strong>if(myMoney < 0)</strong>		If my money is less than zero
+{
+	broke = true;		
+}</pre>
+
+  <div class = "center">
+    Section 1 |
+    <a href="/chapter/4_2">Section 2 |</a></href>
+    <a href="/chapter/4_3">Section 3 |</a></href>
+    <a href="/chapter/4_4">Section 4 |</a></href>
+    <a href="/chapter/4_5">Section 5 |</a></href>
+  </div>

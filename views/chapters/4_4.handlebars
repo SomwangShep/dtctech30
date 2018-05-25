@@ -1,0 +1,155 @@
+  <h1> Best Programming Practices - Section 4</h1>
+  <div class = "center">
+    <a href="/chapter/4_1">Section 1 |</a></href>
+    <a href="/chapter/4_2">Section 2 |</a></href>
+    <a href="/chapter/4_3">Section 3 |</a></href>
+    Section 4 |
+    <a href="/chapter/4_5">Section 5 |</a></href>
+  </div>  
+
+	<h2 id="PromptingForInput">
+		Prompting For Input
+	</h2>
+	<p>
+		There are many times a user is asked to enter input, but might not know what to type.  For example, in the last program, the user was asked:
+	</p>
+	<pre>
+Will you be staying during peak season?</pre>
+	<p>
+		Without any additional information, the user has no way to know what the options are.  The program should always offer options (usually in parentheses), when input is needed.  Some examples are below.
+	</p>
+	<pre>
+Will you be staying during peak season (yes or no)?
+Will you be staying during peak season (y or n)?
+Will you be staying during peak season (Y or N)?</pre>
+	
+	<h2 id="ProgramDesign">
+		Program Design
+	</h2>
+	<p>
+		Beginning programmers are often uncertain about starting new programs.  While this gets easier with time, these suggestions may help.
+	</p>
+	<p>
+		Make a list of all program inputs and outputs.
+	</p>
+	<p>
+		Program inputs include anything the user will enter and any constant values "hard coded" into the program. 
+	</p>
+	<p>
+		Program outputs include any data the program will print.  
+	</p>
+	<pre>
+In the TreeTopInn program, the inputs are:
+Season (peak or off)
+Number of nights (an integer)
+
+The output is:
+The bill (an integer)</pre>
+	<p>
+		Next, write down how you would calculate the output from the inputs.
+	</p>
+	<pre>
+The bill is 30 times the number of nights <strong>if</strong> off season.
+The bill is 50 times the number of nights <strong>if</strong> peak season.</pre>
+	<p>
+		We can see from this that the output requires a multiplication, and that we will need an if statement to determine the numbers involved.  This leads to the code below.
+	</p>
+	<pre>
+if(input.equals("yes"))
+{
+	price = peakPrice;
+}
+System.out.print("Great!  For how many nights? ");
+nights = keyboard.nextInt();
+bill = price * nights;</pre>
+	<p>
+		Write programs in a modular fashion.  Don't try to calculate results while still taking in input.  Get all user input first.  Then perform calculations.  Then display the results.  Every program is different, but If you separate a program's functionality into steps, each step can be written and tested separately.
+	</p>
+	<p>
+		Write and test one step at a time.  After each step, print the values of the variables to see if they are what you expect.  Programmers often enter temporary debugging code that prints the values of variables at different places in the program.  This code is removed when the program has been tested.  It is difficult to fix a program when it has multiple errors in many places.  Don't let them build up.
+	</p>
+	
+	<h2 id="Errors">
+		Errors
+	</h2>
+	<p>
+		There are three kinds of program errors; syntax errors, runtime errors, and logic errors.
+	</p>
+	<p>
+		Syntax errors or compiler errors occur when you break the rules of the language.  Your error is so bad, the compiler can tell it can't possibly be right.  The compiler sends you a message explaining the error, and compilation fails.
+	</p>
+	<p>
+		Runtime errors or exceptions occur when the program follows the rules of the language and compiles, but encounters a problem while running that makes it impossible to continue (division by zero for example).  The program will "throw an exception".  Exception is a polite word for fit.  The program will spit out a cryptic list of errors and stop running.
+	</p>
+	<p>
+		Logic errors occur when the program runs fine, but gives you the wrong answer.  These are often the hardest problems to fix because there are no error messages.  However, we can put in our own messages.  Add temporary print statements that print the values of the variables before and after they change.  This often helps to find exactly where the program is going awry, and to see what it is doing.
+	</p>
+	
+	<h2 id="Exceptions">
+		Exceptions
+	</h2>
+	<p>
+		When a Java program terminates abruptly, we say that it throws an exception.  An error message is generated and printed on the console.
+	</p>
+	<pre>
+Welcome to the Treetop Inn
+$50 a night during peak season
+or $30 a night off season.
+Will you be staying during peak season? <strong>yes</strong>
+Great!  For how many nights? <strong>four</strong>
+
+Exception in thread "main" java.util.<strong>InputMismatchException</strong>
+        at java.util.Scanner.throwFor(Scanner.java:840)
+        at java.util.Scanner.next(Scanner.java:1461)
+        at java.util.Scanner.nextInt(Scanner.java:2091)
+        at java.util.Scanner.nextInt(Scanner.java:2050)
+        at TreeTopInn.main(<strong>TreeTopInn.java:27</strong>)</pre>
+	<p>
+		In the example above, the user entered "four" for the number of nights.  Since the program expects to store this response in an int, it can not continue.  The first line describes the type of exception.
+	</p>
+	<pre>
+Exception in thread "main" java.util.<strong>InputMismatchException</strong></pre>
+	<p>
+		The program has thrown an InputMismatchException because the input does not match what was expected.
+	</p>
+	<p>
+		The rest of the lines in the error message are called a stack trace.  According to the stack trace, the problem was encountered in the file Scanner.java on line 840.
+	</p>
+	<pre>
+at java.util.Scanner.throwFor(<strong>Scanner.java:840</strong>)</pre>
+	<p>
+		This method was called from another place in the Scanner.java file on line 1461.
+	</p>
+	<pre>
+at java.util.Scanner.next(<strong>Scanner.java:1461</strong>)</pre>
+	<p>
+		Which was called from yet another place in Scanner.java on line 2091.
+	</p>
+	<pre>
+at java.util.Scanner.nextInt(<strong>Scanner.java:2091</strong>)</pre>
+	<p>
+		Which was called from yet another place in Scanner.java on line 2050.
+	</p>
+	<pre>
+at java.util.Scanner.nextInt(<strong>Scanner.java:2050</strong>)</pre>
+	<p>
+		Which was called from our program, TreeTopInn.java on line 27.
+	</p>
+	<pre>
+at TreeTopInn.main(<strong>TreeTopInn.java:27</strong>)</pre>
+	<p>
+		The stack trace lists all the parts of the code involved in the exception, even the parts we didn't write.  Of course, the error is in our code.  When you see an exception message like this, look for the line that contains your program name.  Looking at TreeTopInn line 27:
+	</p>
+	<pre>
+nights = keyboard.nextInt();</pre>
+	<P>
+		We see that the error was caused when this line tried to read user input using nextInt(), and did not read an int.
+	</P>
+	
+  <div class = "center">
+    <a href="/chapter/4_1">Section 1 |</a></href>
+    <a href="/chapter/4_2">Section 2 |</a></href>
+    <a href="/chapter/4_3">Section 3 |</a></href>
+    Section 4 |
+    <a href="/chapter/4_5">Section 5 |</a></href>
+  </div> 	

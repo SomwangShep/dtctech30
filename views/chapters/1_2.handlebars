@@ -1,0 +1,119 @@
+  <h1> Introduction - Section 2</h1>
+
+  <div class = "center">
+    <a href="/chapter/1_1">Section 1 |</a></href>
+    Section 2 |
+    <a href="/chapter/1_3">Section 3 |</a></href>
+    <a href="/chapter/1_4">Section 4 |</a></href>
+  </div>  
+  
+  <h2 id="Variables">
+    Variables
+  </h2>
+  <p>
+    As mentioned above, The System.out.println() method will print the String inside its parentheses.  A String is a sequence of characters.  The text we've been surrounding with quotes is called a String constant.  A String constant is a specific sequence of characters, like:
+  </p>
+  <pre>
+"We're knights of the round table"</pre>
+  <p>
+    A String variable is a name that stands for a String of text.
+  </p>
+  <pre>
+String s = "We eat ham and jam and spam a lot";</pre>
+  <p>
+    The line of code above creates a new String variable called s.  The variable is set to the line "We eat ham and jam and spam a lot".  If we use this variable as the argument to System.out.println(), the method prints the line of text the variable is holding.
+  </p>
+  <pre>
+System.out.println(s);</pre>
+  <p>
+    Note that the s is not surrounded by quotation marks.  If an argument to System.out.println() is enclosed in quotes, the exact text in the quotes is displayed.  If there are no quotes, the program looks for a variable with that name, and prints the text held by that variable.
+  </p>
+  <h3>
+    Example Program – TextPrinter
+  </h3>
+  <pre>
+public class TextPrinter
+{
+	public static void main(String[] args)
+	{
+		String s = "a line of text";
+		String line2 = "another line of text";
+
+		System.out.println(s);
+		System.out.println(line2);
+		System.out.println("s");
+		System.out.println("line2");
+	}
+}</pre>
+  <P>
+    The first two calls to System.out.println() do not contain quotes.  The text stored in the variables is printed.  The second two calls have quotes around the variable names, so the names themselves are printed, rather than the variable values.
+  </P>
+  <P>
+    Note that a variable name can be a single letter, or a whole word.  Like class names, a variable name can include numbers as long as the first character is a letter.  Spaces and other symbols are not allowed.  By convention, we always start variable names with a lowercase letter.
+  </P>
+  <p>
+    A String variable is used to store text in a program.  For numbers, we use other types of variables.  An int variable is used to store an integer, or whole number.  A new int variable can be created and set to a value in much the same way as a String variable.
+  </p>
+  <pre>
+int x = 5;</pre>
+  <p >
+    The line of code above creates a new <code>int</code> variable called <code>x</code>, and stores the number 5 in it.  If this variable is used as the argument to System.out.println(), 
+  </p>
+  <pre>
+System.out.println(x);</pre>
+  <p>
+    The variable's value will be automatically converted to a String and printed.  Once again, if the variable name is surrounded by quotes, the variable name will be printed, rather than the variable value.
+  </p>
+  <h2 id="StringConcatenation">
+    String Concatenation
+  </h2>
+  <p>
+    Concatenation is a fancy word for joining.  There are times when we have two Strings, and we want to join them together into one string.  The plus (+) operator placed between two Strings will join them together into a single String.
+  </p>
+  <pre>
+String part1 = "Between our quests we sequin vests";
+String part2 = "and impersonate Clark Gable";
+
+System.out.println(part1 + part2);</pre>
+  <p>
+    The code above creates two String variables.  The two Strings are joined together into a single String before they are printed to the console, causing the program to print the line:
+  </p>
+  <p>
+    Between our quests we sequin vestsand impersonate Clark Gable
+  </p>
+  <p>
+    Note the absence of a space between the two joined lines, because the first String has no space at the end, and the second has no space at the beginning.  If we want a space between two joined Strings, we need to put that in.
+  </p>
+  <pre>
+System.out.println(part1 + " " + part2);</pre>
+  <p>
+    The line of code above joins three Strings together.  The space in the middle is a String constant, the other two parts are String variables.  Many Strings can be concatenated together in one statement.
+  </p>
+  <p>
+    Number variables can also be concatenated to Strings using the concatenation operator.
+  </p>
+  <pre>
+int x = 42;
+System.out.println("The answer is " + x);</pre>
+  <h3>
+    Example Program – Concatenation
+  </h3>
+  <pre>
+public class Concatenation
+{
+	public static void main(String[] args)
+	{
+		String product = "pie";
+		int price = 5;
+
+		System.out.println("A " + product + " is $" + price);
+	}
+}</pre>
+  <p style="text-align: center;"><img src="/img/c1_p10.jpg"%></p>
+  
+  <div class = "center">
+    <a href="/chapter/1_1">Section 1 |</a></href>
+    Section 2 |
+    <a href="/chapter/1_3">Section 3 |</a></href>
+    <a href="/chapter/1_4">Section 4 |</a></href>
+  </div>  

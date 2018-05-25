@@ -1,0 +1,166 @@
+  <h1> Variables - Section 2</h1>
+  
+  <div class = "center">
+  	<a href="/chapter/2_1">Section 1 |</a></href>
+    Section 2 |
+    <a href="/chapter/2_3">Section 3 |</a></href>
+  </div> 
+  
+	<h2 id="typeCasting">Type Casting	</h2>
+	<P>
+		Type casting refers to the conversion of a value from one type to another.  In some cases, we are not aware of the conversion.  If we assign an <code>int</code> value to a <code>double</code> variable, the conversion is automatic because a double variable can hold an integer.
+	</P>
+	<pre>
+int x = 5;
+double y = x;</pre>
+	<P>
+		On the other hand, we can not assign a <code>double</code> value to an <code>int</code> variable.  If we try, the compiler will complain because part of the value might be lost.
+	</P>
+	<pre>
+double y = 3.7;
+int x = y;</pre>
+
+<strong>Compiler Error</strong>
+possible loss of precision
+found   : double
+required: int
+int x = y;
+    ^
+	</p>
+	<P>
+		If we actually want to remove the decimal portion and store the integer part, we have to tell the compiler explicitly to cast the value to the <code>int</code> type.  To cast a value to a new type, precede the value with the new type, enclosed in parentheses. 
+	</P>
+	<pre>
+int x = (int)3.7;</pre>
+	<P>
+		You can cast both constants and variables.  Casting a variable does not change the value of the variable.  It only changes how that value is assigned to the new variable.
+	</P>
+	<Pre>
+double y = 3.7;
+int x = (int)y;</Pre>
+	<p>
+		x is 3, but y is still 3.7.
+	</p>
+	<p>
+		If you want the result of integer division to retain the decimal part, cast one or both operands to a <code>double</code>.  This applies to variables as well as constants.
+	</p>
+	<Pre>
+y = (double)4 / 5</Pre>
+	<P>
+		If a <code>char</code> is cast to an <code>int</code>, the result will be the ACSII value for that <code>char</code>.<br>
+		If an <code>int</code> (variable or constant) is cast to a char, the character will have the ASCII value of the original <code>int</code>.
+
+	</P>
+	<P>
+		Example Program – Casting 
+	</P>
+	<Pre>
+public class Casting
+{
+	public static void main(String[] args)
+	{
+		char letter = 'J';
+		<strong>int value = (int)letter;</strong>
+
+		System.out.print("The ASCII value of " + letter);
+		System.out.println(" is " + value);
+
+		value = 75;
+		<strong>letter = (char)value;</strong>
+
+		System.out.print("The ASCII character for " + value);
+		System.out.println(" is " + letter);
+	}
+}</Pre>
+	<p style="text-align: center;"><img src="/img/c2_p7.jpg"%></p>
+	<h2 id="mathSh">
+		Mathematical Shortcuts
+	</h2>
+	<P>
+		The following shortcuts are not needed, but are supported for convenience.
+	</P>
+	<pre>
+x++;		is equivalent to		x = x + 1;
+x--;		is equivalent to		x = x – 1;
+x += n;		is equivalent to		x = x + n;
+x -= n;		is equivalent to		x = x – n;
+x *= n;		is equivalent to		x = x * n;
+x /= n;		is equivalent to		x = x / n;
+x %= n;		is equivalent to		x = x % n;</pre>
+	<h2 id="orderOfOpe">
+		Order of Operations
+	</h2>
+	<p>
+		When the computer executes an assignment statement, it performs one operation at a time.  The operations are performed in the following order.  For each step, if there are multiple operations of the same kind, they are performed left to right.
+	</p>
+	<pre>
+Replace variables
+Casting
+Multiplications and Divisions (*, /, %)
+Additions and Subtractions (+, -)
+Assignment (=)</pre>
+	<p>
+		Example
+	</p>
+	<pre>
+double a;
+double b = 3.8;
+int c = 4;
+
+a = 5 + c * (int)b - 7 % c;</pre>
+	<P>
+		Think like the computer.  The operations are listed in steps below.  One type of operation is done on each line.
+	</P>
+	<p>
+		Steps:
+	</p>	
+	<pre>
+a = 5 + 4 * (int)3.8 - 7 % 4		Replace variables
+a = 5 + 4 * 3 - 7 % 4			Casting
+a = 5 + 12 - 3				Multiplications and Divisions
+a = 14					Additions and Subtractions
+a ← 14					Assignment</pre>
+	<P>
+		Parentheses can be used to force a specific order of operations.
+	</P>
+	<Pre>
+12 / (1 + 2) => 4</Pre>
+	
+	<h2 id="stringJump">
+		Strings
+	</h2>
+	<P>
+		Every variable is either of a primitive type or a class type.  Like a primitive type, a class defines the sort of data a variable can hold.  When we make a new variable of a class type, we say that we created a new object.  An object is a specific instance of a class.  For any class, we can create many objects.  The term object refers to the collection of stored data and is composed of multiple primitives.  The variable is called a reference variable.  We say that the reference variable points to the object.
+	</P>
+	<P>
+		An example of a class is the String class.  Each String object is composed of a number of chars.  We can make an object of the String class and a reference variable that points to the object just as we make and initialize a primitive variable.
+	</P>
+	<Pre>
+String firstName = "Dean";</Pre>
+	<p>
+		The String constant must be enclosed in quotation marks (").  A String variable can be set to a new constant, or to the same value as another variable using an assignment statement.
+	</p>
+	<Pre>
+lastName = firstName;
+firstName = "James";</Pre>
+	<P>
+		Because Strings are so commonly used, we can create them and assign values just as we do with primitives.  But Strings are not primitives, they are objects of a class.  The shortcuts for creating and assigning values do not work when creating objects of other classes.
+	</P>
+	<p>
+		To initialize a new String to an empty String, use:
+	</p>
+	<pre>
+String name = "";</pre>
+	<p>
+		When the + operator is applied to String objects, it does not perform the same function as it does when it is applied to primitive values.  Rather than add the two values, the Strings are joined.
+	</p>
+	<pre>
+3 + 5 => 8						(+ applied to ints)
+
+"3" + "5" => "35"			(+ applied to Strings)</pre>
+
+  <div class = "center">
+  	<a href="/chapter/2_1">Section 1 |</a></href>
+    Section 2 |
+    <a href="/chapter/2_3">Section 3 |</a></href>
+  </div> 

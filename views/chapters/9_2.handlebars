@@ -1,0 +1,263 @@
+  <h1> Strings - Section 2</h1>
+  <div class = "center">
+    <a href="/chapter/9_1">Section 1 |</a></href>
+    Section 2 |
+  </div>
+    
+  
+<h2 id="StringMethodsGroupedByCategory">
+	String Methods Grouped By Category
+</h2>
+<p>
+	The methods below are used to compare two Strings.  Either of the String objects might contain a single character, a word, a sentence, or the text of an entire book.  Note that these methods all <code>return</code> a <code>boolean</code> value.
+</p>
+<pre>
+boolean equals(String s)
+boolean equalsIgnoreCase(String s)
+boolean contains(String s)
+boolean startsWith(String s)
+boolean endsWith(String s)</pre>
+<p>The methods below manipulate existing Strings in common ways.</p>
+<pre>
+String toLowerCase()
+String toUpperCase()
+String trim()
+String replaceAll(String original, String replacement)</pre>
+<p>
+	The methods below get information about the String they are called on.  The indexOf() method is used to search Strings.
+</p>
+<pre>
+int length()
+int indexOf(String s)
+int indexOf(String s, int index)</pre>
+<p>
+	The methods below can be used to pull a String apart.  A different method is chosen based on the type of data it breaks the String into. 
+</p>
+<pre>
+char charAt(int index)
+char[] toCharArray()
+String substring(int beginIndex)
+String substring(int beginIndex, int endIndex)
+String[] split(String separator)</pre>
+<p>
+	Strings can be put together using the concatenation operator (+) to join Strings, or the String constructor to join a <code>char</code> array.
+</p>
+<pre>
+String newString = oldString1 + oldString2;
+String newString = new String(charArray);</pre>
+<p>
+	A combination of concatenation and the substring() method can be used to remove part of a String based on index value.  Below, the third character is removed.
+</p>
+<pre>
+String newString = oldString.subString(0, 3) + oldString.subString(4) ;
+String newString = oldString.subString(0, 3) + "@" + oldString.subString(4) ;</pre>
+<h3>Example Program – StringTester </h3>
+<p>
+	The StringTester program asks the user to enter a sentence, and a word.  Then it uses String methods to search and process the Strings.
+</p>
+<pre>
+import java.util.Scanner;
+
+public class StringTester
+{
+	public static void main(String[] args)
+	{
+		Scanner keyboard = new Scanner(System.in);
+		String sentence;
+		String word;
+		int sentenceLength;
+		int wordLength;
+
+		System.out.println("Please enter a sentence.");
+		sentence = keyboard.nextLine().trim();
+		System.out.println("Thanks, now enter a word.");
+		word = keyboard.nextLine().trim();
+
+		System.out.println("\nYour sentence has " + sentence.length() + " letters");
+		System.out.println("Your word has " + word.length() + " letters");
+
+		System.out.println("\nConverting to lowercase...");
+		sentence = sentence.toLowerCase();
+		word = word.toLowerCase();
+		System.out.println("Sentence = " + sentence);
+		System.out.println("Word = " + word);
+
+		if(sentence.contains(word))
+		{
+			System.out.println("\nYour sentence does contain " + word);
+			System.out.println("It starts at character " + sentence.indexOf(word));
+		}
+		else
+		{
+			System.out.println("\nYour sentence does not contain " + word);
+		}
+
+		System.out.println("\nLet's break that sentence into an array of words.");
+		String[] words = sentence.split(" ");
+		for(int i = 0; i < words.length; i++)
+		{
+			if(words[i].equals(word))
+			{
+				System.out.println(words[i] + ": is " + word);
+			}
+			else
+			{
+				if(words[i].contains(word))
+				{
+					System.out.println(words[i] + ": contains " + word);
+				}
+				else
+				{
+					System.out.println(words[i] + ": does not contain " + word);
+				}
+			}
+		}
+
+		System.out.println("\nLet's mark those words in the original sentence.");
+		sentence = sentence.replaceAll(word, word.toUpperCase());
+		System.out.println(sentence);
+	}
+}</pre>
+<p style="text-align: center;"><img src="/img/c9_p9.jpg"%></p>
+<h3>Example Propgram – PalendromeChecker</h3>
+<p>
+	The PalindromeChecker program checks for palindrome words.  A word is a palindrome if reversing it yields the same word.  The words noon and level are palindromes.
+</p>
+<p style="text-align: center;"><img src="/img/c9_p9_02.jpg"%></p>
+<pre>
+import java.util.Scanner;
+
+public class PalindromeChecker
+{
+	public static void main(String[] args)
+	{
+		Scanner keyboard = new Scanner(System.in);
+		String word;
+		boolean palendrome = true;
+		int length;
+
+		System.out.print("Enter a word: ");
+		word = keyboard.nextLine();
+		length = word.length();
+
+
+		<strong>// Using characters</strong>
+		char c1;
+		char c2;
+		palendrome = true;
+		for(int i = 0; i < length/2; i++)
+		{
+			c1 = word.charAt(i);
+			c2 = word.charAt(length - i - 1);
+			if(c1 != c2)
+			{
+				palendrome = false;
+			}
+		}
+		if(palendrome)
+		{
+			System.out.println("Yup.  It's a palindrome.");
+		}
+		else
+		{
+			System.out.println("Nope.  Not a palindrome.");
+		}
+		
+		<strong>// Using Strings</strong>
+		String s1;
+		String s2;
+		palendrome = true;
+		for(int i = 0; i < length/2; i++)
+		{
+			s1 = word.substring(i, i + 1);
+			s2 = word.substring(length - i - 1, length - i);
+			if(!s1.equals(s2))
+			{
+				palendrome = false;
+			}
+		}
+		if(palendrome)
+		{
+			System.out.println("Still a palindrome.");
+		}
+		else
+		{
+			System.out.println("Still not a palindrome.");
+		}
+		
+		<strong>// Using character arrays</strong>
+		char[] a = word.toCharArray();
+		palendrome = true;
+		for(int i = 0; i < length/2; i++)
+		{
+			if(a[i] != a[length - i - 1])
+			{
+				palendrome = false;
+			}
+		}
+		if(palendrome)
+		{
+			System.out.println("Still a palindrome.");
+		}
+		else
+		{
+			System.out.println("Still not a palindrome.");
+		}
+	}
+}</pre>
+<p>
+	The program uses three different approaches to check the word.  The first approach uses the charAt() method and a <code>for</code> loop to step through the string both forward and backward.  
+</p>
+<p>
+	In the first pass through the loop, one <code>char, c1,</code> is set to the first character in the String.  Another <code>char, c2,</code> is set to the last character in the String.  As <code>i</code> increases, <code>c1</code> steps up through the String while <code>c2</code> steps down.
+</p>
+<pre>
+c1 = word.charAt(i);
+c2 = word.charAt(length - i - 1);</pre>
+<p>
+	The variable, <code>length</code>, is set to the length of the word at the beginning of the program.  In any pass through the loop, if the corresponding characters are not the same, a <code>boolean</code>, palindrome, is set to <code>false</code>.
+</p>
+<pre>
+if(c1 != c2)
+{
+	palendrome = false;
+}</pre>
+<p>
+	Since the first half of the string is being compared to the last half, the <code>for</code> loop only needs to run for half the length of the word.
+</p>
+<pre>for(int i = 0; i < length/2; i++)</pre>
+<p>
+	The second approach uses the substring() method to represent one character of the String at a time as a String.
+</p>
+<pre>
+s1 = word.substring(i, i + 1);
+s2 = word.substring(length - i - 1, length - i);</pre>
+<p>
+	Since the substring() method with two arguments does not <code>return</code> the character at the ending index, if the second argument is one greater than the first argument, only the character at the beginning index will be returned.  The Strings are then compared using the equals() method.
+</p>
+<pre>
+if(!s1.equals(s2))
+{
+	palendrome = false;
+}</pre>
+<p>
+	The third approach uses the toCharArray() method to convert the String to an array of <code>chars</code>.  The elements are compared in a similar way as in the other two approaches.
+</p>
+<p>
+	Notice that in the third approach new variables are not made to hold the characters as the loop steps through the String.  The same could be done for the first two approaches, but the code starts to become hard to read.
+</p>
+<pre>
+if(word.charAt(i)!= word.charAt(length - i - 1))
+{
+	palendrome = false;
+}
+
+if(!word.substring(i, i + 1).equals(word.substring(length - i - 1, length - i)))
+{
+	palendrome = false;
+}</pre>
+
+  <div class = "center">
+    <a href="/chapter/9_1">Section 1 |</a></href>
+    Section 2 |
+  </div>
