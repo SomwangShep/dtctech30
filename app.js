@@ -126,14 +126,14 @@ app.get('/quiz1', (req, res)=>
   var promise = spawn('java', ['-jar',fn]);
   var childProcess = promise.childProcess;
 
-  console.log(`****************************************************************`);
+  // console.log(`****************************************************************`);
   childProcess.stdout.on('data', function (data)
   {
     i = i + 1;
-    console.log(`i: ${i}`);
+    // console.log(`i: ${i}`);
     var qr = data.toString();
     rawData[i] = qr;//this saving in db
-    console.log(qr);
+    // console.log(qr);
     qr = qr.split(";");
     
     hea[i] = qr[0].trim();
@@ -155,9 +155,9 @@ app.get('/quiz1', (req, res)=>
       qs[i] = va;
     }
 
-    console.log(`print: ${prt[i]}`);
-    console.log(`ans: ${javAns[i]}`);
-    console.log(`varible: ${va}`);
+    // console.log(`print: ${prt[i]}`);
+    // console.log(`ans: ${javAns[i]}`);
+    // console.log(`varible: ${va}`);
   });
 
   childProcess.stderr.on('data', function (data)
@@ -175,7 +175,7 @@ app.get('/quiz1', (req, res)=>
       prt: `${prt[i]}`
     });
     // ----------- End Render form -------------------------------
-    console.log("Complete!");
+    // console.log("Complete!");
   })
   .catch(function (err)
   {
@@ -189,7 +189,7 @@ reset score,i varible
 ----------------------------------------------------------------------*/
 app.post('/quiz1',(req,res) => {
   usrAns[i] = req.body.ans;
-  console.log(`Answer: ${usrAns[i]}`);
+  // console.log(`Answer: ${usrAns[i]}`);
   
   if (usrAns[i] == javAns[i])
   {

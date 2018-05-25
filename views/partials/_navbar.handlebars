@@ -18,29 +18,16 @@
         <li class="nav-item">
           <a class="nav-link" href="/about">Chat</a>
         </li>   
-        <li class="nav-item">
-          <a class="nav-link" href="/about">User</a>
-        </li>     
-        <li class="nav-item">
-          <a class="nav-link" href="/quiz1">Quiz</a>
-        </li>        
-        <li class="nav-item">
-          <a class="nav-link" href="/quizzes">Score</a>
-        </li>            
       </ul>
       <ul class="navbar-nav ml-auto">
         {{#if user}}
-        <li class="nav-item">
-          <a class="nav-link">Welcome {{user.name}}</a>
-        </li>
-          
-          {{!--<li class="nav-item dropdown">--}}
-          {{!--  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropdownMenuLink">Video Ideas</a>--}}
-          {{!--  <div class="dropdown-menu">--}}
-          {{!--    <a href="/ideas" class="dropdown-item">Ideas</a>--}}
-          {{!--    <a href="/ideas/add" class="dropdown-item">Add Idea</a>--}}
-          {{!--  </div>--}}
-          {{!--</li>--}}
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropdownMenuLink">Welcome {{user.name}}</a>
+            <div class="dropdown-menu">
+              <a href="/quizzes" class="dropdown-item">Score</a>
+              <a href="/quiz1" class="dropdown-item">Chapter #1 Quiz</a>
+            </div>
+          </li>
           
           <li class="nav-item">
             <a href="/users/logout" class="nav-link">Logout</a>
