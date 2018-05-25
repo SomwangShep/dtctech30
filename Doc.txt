@@ -22,3 +22,5 @@ https://code.i-harness.com/en/q/1a67f64 - spaw error
 heroku buildpacks:add heroku/java --index 1
 https://devcenter.heroku.com/articles/buildpacks#detection-failure
 heroku run java -version
+
+gg
