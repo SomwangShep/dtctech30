@@ -4,6 +4,7 @@ h1 {text-align: center;}
   text-align: center;
 }
 
+/*This one is using oi code*/
 pre
 {
 	padding: 10px;
@@ -87,3 +88,8 @@ footer ul {
   /*background-color: #dddddd;*/
 }
 
+/*==================index collaps===============================*/
+.card-link {
+  margin-left: 10px !important;
+  /*color: red !important;*/
+}

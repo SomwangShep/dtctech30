@@ -7,6 +7,7 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const mongoose = require('mongoose');
+const {ensureAuthenticated} = require('./helpers/auth');
 
 const app = express();
 
@@ -88,7 +89,7 @@ app.get('/about', (req, res) => {
   res.render('about');
 });
 
-app.get("/chapter/:n",function(req, res){
+app.get("/chapter/:n",ensureAuthenticated,function(req, res){
     var ch = req.params.n;
      res.render(`chapters/${ch}`);
 });
