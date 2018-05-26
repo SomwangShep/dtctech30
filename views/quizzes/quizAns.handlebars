@@ -1,4 +1,11 @@
   <div class="jumbotron">   
+    <div style="text-align: center;">
+      <h2>Score: {{score}}/{{cnt}}</h2>
+      <p>
+        <a href="/quiz1" class="btn btn-warning" role="button">Try again</a>
+        <a href="/quizzes" class="btn btn-warning" role="button">Exit Quiz</a>
+      </p>
+    </div>  
     <!--- #1 --->
     <div class="row">
       <div class="col">
@@ -168,11 +175,6 @@
         {{chk9}}
       </div>
     </div>        
-    
-    Score: {{score}}/{{cnt}}
-    <form action="/save" method="POST"> 
-      <input type="submit" class="btn btn-primary" name="submit" value="Next">
-    </form>
     
   </div>
     
