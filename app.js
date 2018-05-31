@@ -122,6 +122,8 @@ var fn = __dirname + '/public/Quiz1.jar';
 app.get('/quiz1', (req, res)=>
 {
   var va = "";//keep varible in each questions  
+  var t = 0;// this varible just temp to keep the index bec i will not increase until 'Next' button
+  t = i + 1;
   
   // =============== Start execute java file =========================//
   var promise = spawn('java', ['-jar',fn]);
@@ -130,17 +132,17 @@ app.get('/quiz1', (req, res)=>
   // console.log(`****************************************************************`);
   childProcess.stdout.on('data', function (data)
   {
-    i = i + 1;
+    // i = i + 1;
     // console.log(`i: ${i}`);
     var qr = data.toString();
-    rawData[i] = qr;//this saving in db
+    rawData[t] = qr;//this saving in db
     // console.log(qr);
     qr = qr.split(";");
     
-    hea[i] = qr[0].trim();
-    prt[i] = qr[qr.length-2].trim() + ";";
+    hea[t] = qr[0].trim();
+    prt[t] = qr[qr.length-2].trim() + ";";
     var s = qr[qr.length-1].trim();
-    javAns[i] = s.substring(1,s.length-1);//take off ~ the begining and the end`
+    javAns[t] = s.substring(1,s.length-1);//take off ~ the begining and the end`
     
     /*-----------------------------------------------------
     //varible
@@ -153,12 +155,11 @@ app.get('/quiz1', (req, res)=>
         var tmp = qr[j+1].trim() + ";";
         va = va +"<br>"+ tmp ;
       }      
-      qs[i] = va;
     }
-
-    // console.log(`print: ${prt[i]}`);
-    // console.log(`ans: ${javAns[i]}`);
-    // console.log(`varible: ${va}`);
+    else {
+      va = "<br>";
+    }
+    qs[t] = va;
   });
 
   childProcess.stderr.on('data', function (data)
@@ -170,10 +171,10 @@ app.get('/quiz1', (req, res)=>
     //this is where we need to do something after return form Java
     // ----------- Start Render form -------------------------------
     res.render('quizzes/quiz', {
-      cnt: `${i+1}`,
-      hea: `${hea[i]}`,
-      qs: `${qs[i]}`,
-      prt: `${prt[i]}`
+      cnt: `${t + 1}`,
+      hea: `${hea[t]}`,
+      qs: `${qs[t]}`,
+      prt: `${prt[t]}`
     });
     // ----------- End Render form -------------------------------
     // console.log("Complete!");
@@ -183,12 +184,14 @@ app.get('/quiz1', (req, res)=>
     console.error('[spawn] ERROR: ', err);
   });
 });
-/*---------------------------------------------------------------------
+
+/*=======================================================================
         Next button
 Save answer, one hit 10 it will display solution, then save to database
 reset score,i varible
-----------------------------------------------------------------------*/
+========================================================================*/
 app.post('/quiz1',(req,res) => {
+  i = i + 1;
   usrAns[i] = req.body.ans;
   // console.log(`Answer: ${usrAns[i]}`);
   
@@ -200,7 +203,7 @@ app.post('/quiz1',(req,res) => {
     chk[i] = "Incorrect";
   }
   
-  if (i < loop-1)  {
+  if (i < loop - 1)  {
     res.redirect('back');
   } else {
     res.render('quizzes/quizAns', {
